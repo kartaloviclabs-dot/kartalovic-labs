@@ -3723,3 +3723,108 @@ button {
 .contact-page .contact-final h2 .accent {
     margin-top: 7px;
 }
+
+/* =========================================================
+   LEGAL PAGES
+========================================================= */
+.legal-page {
+    background: #0b0d10;
+    color: #f3f1ea;
+}
+
+.legal-shell {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 170px 0 110px;
+}
+
+.legal-kicker {
+    margin: 0 0 18px;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.66;
+}
+
+.legal-title {
+    max-width: 900px;
+    margin: 0 0 28px;
+    font-size: clamp(3rem, 8vw, 7.2rem);
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+}
+
+.legal-intro {
+    max-width: 760px;
+    margin: 0 0 70px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.75;
+    opacity: 0.72;
+}
+
+.legal-card {
+    padding: 34px 0;
+    border-top: 1px solid rgba(255,255,255,.14);
+}
+
+.legal-card:last-child {
+    border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.legal-card h2 {
+    margin: 0 0 16px;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    letter-spacing: -0.02em;
+}
+
+.legal-card p,
+.legal-card li {
+    max-width: 900px;
+    margin: 0 0 12px;
+    line-height: 1.75;
+    color: rgba(243,241,234,.76);
+}
+
+.legal-card ul {
+    margin: 10px 0 0 22px;
+}
+
+.legal-card a {
+    color: #f3f1ea;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.legal-contact {
+    font-style: normal;
+    line-height: 1.8;
+    color: rgba(243,241,234,.82);
+}
+
+.legal-lang-panel[hidden] {
+    display: none !important;
+}
+
+.legal-note {
+    margin-top: 50px;
+    padding: 22px 24px;
+    border: 1px solid rgba(255,255,255,.14);
+    color: rgba(243,241,234,.62);
+    line-height: 1.65;
+}
+
+@media (max-width: 700px) {
+    .legal-shell {
+        width: min(100% - 28px, 1120px);
+        padding-top: 130px;
+        padding-bottom: 80px;
+    }
+
+    .legal-title {
+        font-size: clamp(2.65rem, 15vw, 4.8rem);
+    }
+
+    .legal-card {
+        padding: 26px 0;
+    }
+}
