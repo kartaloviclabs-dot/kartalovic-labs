@@ -1527,12 +1527,13 @@ formBudgetUnknown:
 
         projectInquiryForm.addEventListener(
             "submit",
-            async event => {
+           async event => {
 
-                event.preventDefault();
+    event.preventDefault();
 
+    alert("KARTALOVIC LABS JS TEST");
 
-                const language =
+    const language =
                     translations[currentLanguage]
                         ? currentLanguage
                         : "en";
