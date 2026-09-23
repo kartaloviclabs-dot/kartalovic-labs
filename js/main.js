@@ -1602,16 +1602,41 @@ formBudgetUnknown:
 
                     projectInquiryForm.reset();
 
+if (formMessage) {
 
-                    if (formMessage) {
+    formMessage.textContent =
+        "✓ " + selected.formSuccess;
 
-                        formMessage.textContent =
-                            selected.formSuccess;
+    formMessage.style.color =
+        "#8ee6a4";
 
-                        formMessage.style.color =
-                            "#8ee6a4";
+    formMessage.style.fontWeight =
+        "700";
 
-                    }
+    formMessage.style.fontSize =
+        "1rem";
+
+    formMessage.style.marginTop =
+        "18px";
+
+    formMessage.style.padding =
+        "14px 16px";
+
+    formMessage.style.border =
+        "1px solid rgba(142, 230, 164, 0.35)";
+
+    formMessage.style.borderRadius =
+        "10px";
+
+    formMessage.style.background =
+        "rgba(142, 230, 164, 0.08)";
+
+    formMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
 
 
                 } catch (error) {
