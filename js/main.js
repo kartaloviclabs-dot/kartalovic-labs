@@ -766,13 +766,28 @@ formBudgetUnknown:
                 "Još nisam siguran",
 
             formBudget:
-                "Okvirni budžet",
+    "Okvirni budžet",
 
-            formBudgetOptional:
-                "Opciono",
+formBudgetOptional:
+    "Opciono",
 
-            formBudgetUnknown:
-                "Još ne znam",
+formBudgetUnder500:
+    "Do 500 €",
+
+formBudget5001000:
+    "500 € – 1.000 €",
+
+formBudget10002500:
+    "1.000 € – 2.500 €",
+
+formBudget25005000:
+    "2.500 € – 5.000 €",
+
+formBudget5000Plus:
+    "5.000 €+",
+
+formBudgetUnknown:
+    "Još ne znam",
 
             formMessage:
                 "Opišite svoju ideju",
