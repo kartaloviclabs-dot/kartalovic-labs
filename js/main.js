@@ -1531,8 +1531,6 @@ formBudgetUnknown:
 
     event.preventDefault();
 
-    alert("KARTALOVIC LABS JS TEST");
-
     const language =
                     translations[currentLanguage]
                         ? currentLanguage
