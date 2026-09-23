@@ -187,15 +187,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
             formNotSure:
                 "I'm not sure yet",
+formBudget:
+    "Approximate budget",
 
-            formBudget:
-                "Approximate budget",
+formBudgetOptional:
+    "Optional",
 
-            formBudgetOptional:
-                "Optional",
+formBudgetUnder500:
+    "Under €500",
 
-            formBudgetUnknown:
-                "I don't know yet",
+formBudget5001000:
+    "€500 – €1,000",
+
+formBudget10002500:
+    "€1,000 – €2,500",
+
+formBudget25005000:
+    "€2,500 – €5,000",
+
+formBudget5000Plus:
+    "€5,000+",
+
+formBudgetUnknown:
+    "I don't know yet",
 
             formMessage:
                 "Tell us about your idea",
