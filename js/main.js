@@ -473,13 +473,28 @@ formBudgetUnknown:
                 "Ich bin noch nicht sicher",
 
             formBudget:
-                "Ungefähres Budget",
+    "Ungefähres Budget",
 
-            formBudgetOptional:
-                "Optional",
+formBudgetOptional:
+    "Optional",
 
-            formBudgetUnknown:
-                "Ich weiß es noch nicht",
+formBudgetUnder500:
+    "Unter 500 €",
+
+formBudget5001000:
+    "500 € – 1.000 €",
+
+formBudget10002500:
+    "1.000 € – 2.500 €",
+
+formBudget25005000:
+    "2.500 € – 5.000 €",
+
+formBudget5000Plus:
+    "Ab 5.000 €",
+
+formBudgetUnknown:
+    "Ich weiß es noch nicht",
 
             formMessage:
                 "Erzählen Sie uns von Ihrer Idee",
