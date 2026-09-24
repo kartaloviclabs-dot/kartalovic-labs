@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             heroLine3: "PRODUCTS.",
 
             heroDescription:
-                "Native Android apps, modern websites and custom digital solutions — from the first idea to a working product.",
+                "Native Android apps, modern websites, digital products and SEO optimization — built around your goals.",
 
             startProject: "Start a project",
             exploreWork: "Explore our work",
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ideaFree:
                 "The initial project discussion, guidance and information are free — with no obligation to continue.",
 
-            servicesLabel: "WHAT WE BUILD",
+            servicesLabel: "WHAT WE DO",
 
             servicesIntro:
                 "Focused digital solutions built around the idea, the users and the real purpose of the product.",
@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
             serviceProductTitle: "Digital Products",
             serviceProductText:
                 "From an early concept to a working digital product — planning, design, development and launch.",
+
+            serviceSeoTitle: "SEO Optimization",
+            serviceSeoText:
+                "Technical and on-page SEO, metadata, indexing and Search Console setup, with performance improvements to help your website get discovered.",
 
             proofLabel: "OUR APPROACH",
             proofLine1: "LESS TALK.",
@@ -89,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             studioLine3: "WE BUILD TO LAST.",
 
             studioDescription:
-                "KARTALOVIC LABS is an independent digital studio focused on Android applications, modern websites and digital products. We prefer practical solutions, clear communication and real working products over unnecessary complexity.",
+                "KARTALOVIC LABS is an independent digital studio focused on Android applications, modern websites, digital products and SEO optimization. We prefer practical solutions, clear communication and real working products over unnecessary complexity.",
 
             workTogether: "START A CONVERSATION",
 
@@ -276,7 +280,7 @@ formBudgetUnknown:
                 "PRODUKTE.",
 
             heroDescription:
-                "Native Android-Apps, moderne Websites und individuelle digitale Lösungen — von der ersten Idee bis zum funktionierenden Produkt.",
+                "Native Android-Apps, moderne Websites, digitale Produkte und SEO-Optimierung — abgestimmt auf Ihre Ziele.",
 
             startProject:
                 "Projekt starten",
@@ -309,7 +313,7 @@ formBudgetUnknown:
                 "Das erste Projektgespräch, unsere Einschätzung und grundlegende Informationen sind kostenlos — ohne Verpflichtung zur weiteren Zusammenarbeit.",
 
             servicesLabel:
-                "WAS WIR ENTWICKELN",
+                "UNSERE LEISTUNGEN",
 
             servicesIntro:
                 "Digitale Lösungen, die sich an der Idee, den Nutzern und dem tatsächlichen Zweck des Produkts orientieren.",
@@ -331,6 +335,10 @@ formBudgetUnknown:
 
             serviceProductText:
                 "Von der ersten Idee bis zum funktionierenden digitalen Produkt — Planung, Design, Entwicklung und Launch.",
+
+            serviceSeoTitle: "SEO-Optimierung",
+            serviceSeoText:
+                "Technische SEO und Onpage-Optimierung, Metadaten sowie die Einrichtung von Indexierung und Search Console – ergänzt durch Performance-Verbesserungen für eine bessere Auffindbarkeit Ihrer Website.",
 
             proofLabel:
                 "UNSER ANSATZ",
@@ -366,7 +374,7 @@ formBudgetUnknown:
                 "WIR ENTWICKELN FÜR DAUER.",
 
             studioDescription:
-                "KARTALOVIC LABS ist ein unabhängiges Digitalstudio mit Fokus auf Android-Anwendungen, moderne Websites und digitale Produkte. Wir setzen auf praktische Lösungen, klare Kommunikation und funktionierende Produkte statt unnötiger Komplexität.",
+                "KARTALOVIC LABS ist ein unabhängiges Digitalstudio mit Fokus auf Android-Anwendungen, moderne Websites, digitale Produkte und SEO-Optimierung. Wir setzen auf praktische Lösungen, klare Kommunikation und funktionierende Produkte statt unnötiger Komplexität.",
 
             workTogether:
                 "LASSEN SIE UNS REDEN",
@@ -569,7 +577,7 @@ formBudgetUnknown:
                 "PROIZVODE.",
 
             heroDescription:
-                "Android aplikacije, moderni web sajtovi i digitalna rješenja — od prve ideje do gotovog proizvoda.",
+                "Android aplikacije, moderni web sajtovi, digitalni proizvodi i SEO optimizacija — prema vašim ciljevima.",
 
             startProject:
                 "Pokreni projekat",
@@ -625,6 +633,10 @@ formBudgetUnknown:
             serviceProductText:
                 "Od početne ideje do funkcionalnog digitalnog proizvoda — planiranje, dizajn, razvoj i lansiranje.",
 
+            serviceSeoTitle: "SEO optimizacija",
+            serviceSeoText:
+                "Tehnički i on-page SEO, metapodaci, podešavanje indeksiranja i Search Console-a, uz poboljšanja performansi koja pomažu da korisnici lakše pronađu vaš sajt.",
+
             proofLabel:
                 "NAŠ PRISTUP",
 
@@ -659,7 +671,7 @@ formBudgetUnknown:
                 "GRADIMO DA TRAJE.",
 
             studioDescription:
-                "KARTALOVIC LABS je nezavisni digitalni studio fokusiran na Android aplikacije, moderne web sajtove i digitalne proizvode. Biramo praktična rješenja, jasnu komunikaciju i proizvode koji stvarno rade, bez nepotrebnog komplikovanja.",
+                "KARTALOVIC LABS je nezavisni digitalni studio fokusiran na Android aplikacije, moderne web sajtove, digitalne proizvode i SEO optimizaciju. Biramo praktična rješenja, jasnu komunikaciju i proizvode koji stvarno rade, bez nepotrebnog komplikovanja.",
 
             workTogether:
                 "ZAPOČNIMO RAZGOVOR",
