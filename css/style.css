@@ -2339,6 +2339,19 @@ button {
     font-weight: 700;
 }
 
+/* Keep Serbian uppercase accents clear of the preceding line. */
+html:lang(sr) .proof-inner h2,
+html:lang(sr) .studio-manifesto h2 {
+    line-height: 1.05;
+}
+
+/* Keep the Serbian word STVARANJA. within narrow mobile viewports. */
+@media (max-width: 420px) {
+    html:lang(sr) .proof-inner h2 {
+        font-size: 13.5vw;
+    }
+}
+
 .proof-inner h2 span {
     display: block;
 }
