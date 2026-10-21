@@ -422,7 +422,7 @@ formBudgetUnknown:
                 "NUR FÜR DEN LAUNCH.",
 
             studioLine3:
-                "WIR ENTWICKELN FÜR DAUER.",
+                "WIR ENTWICKELN FÜR DIE ZUKUNFT.",
 
             studioDescription:
                 "KARTALOVIC LABS ist ein unabhängiges Digitalstudio mit Fokus auf Android-Anwendungen, moderne Websites, digitale Produkte und SEO-Optimierung. Wir setzen auf praktische Lösungen, klare Kommunikation und funktionierende Produkte statt unnötiger Komplexität.",
@@ -697,7 +697,7 @@ formBudgetUnknown:
                 "NE MORATE IMATI",
 
             ideaLine2:
-                "SVE UNAPRIJED",
+                "SVE UNAPRED",
 
             ideaLine3:
                 "ISPLANIRANO.",
@@ -706,16 +706,16 @@ formBudgetUnknown:
                 "Imate ideju za aplikaciju, web sajt ili digitalni proizvod? Dovoljna je jednostavna poruka da započnemo razgovor.",
 
             ideaText2:
-                "Recite nam šta želite postići. Pomoći ćemo vam da razumijete šta je moguće, kako bi projekat mogao biti realizovan, šta je potrebno i koji bi bili naredni koraci.",
+                "Recite nam šta želite postići. Pomoći ćemo vam da razumete šta je moguće, kako bi projekat mogao biti realizovan, šta je potrebno i koji bi bili naredni koraci.",
 
             ideaFree:
-                "Početni razgovor, procjena i informacije o projektu su besplatni — bez obaveze da nastavite saradnju sa nama.",
+                "Početni razgovor, procena i informacije o projektu su besplatni — bez obaveze da nastavite saradnju sa nama.",
 
             servicesLabel:
                 "ŠTA RADIMO",
 
             servicesIntro:
-                "Digitalna rješenja razvijena prema ideji, korisnicima i stvarnoj svrsi proizvoda.",
+                "Digitalna rešenja razvijena prema ideji, korisnicima i stvarnoj svrsi proizvoda.",
 
             serviceAndroidTitle:
                 "Android razvoj",
@@ -727,7 +727,7 @@ formBudgetUnknown:
                 "Web razvoj",
 
             serviceWebText:
-                "Moderni i responzivni web sajtovi koji profesionalno predstavljaju vaš posao i pretvaraju posjetioce u stvarne upite.",
+                "Moderni i responzivni web sajtovi koji profesionalno predstavljaju vaš posao i pretvaraju posetioce u stvarne upite.",
 
             serviceProductTitle:
                 "Digitalni proizvodi",
@@ -749,13 +749,13 @@ formBudgetUnknown:
                 "VIŠE STVARANJA.",
 
             proofText:
-                "Vjerujemo da kvalitetan rad najbolje govori sam za sebe. Umjesto da vam pričamo šta možemo napraviti, radije ćemo vam pokazati.",
+                "Verujemo da kvalitetan rad najbolje govori sam za sebe. Umesto da vam pričamo šta možemo napraviti, radije ćemo vam pokazati.",
 
             featuredProject:
                 "IZDVOJENI PROJEKAT",
 
             retroloopDescription:
-                "Native Android aplikacija za retro gaming, razvijena od temelja sa vlastitim interfejsom, podrškom za kontrolere, save state sistemom, bibliotekama igara i native emulator integracijom.",
+                "Native Android aplikacija za retro gaming, razvijena od temelja sa sopstvenim interfejsom, podrškom za kontrolere, save state sistemom, bibliotekama igara i native emulator integracijom.",
 
             viewProject:
                 "Pogledajte projekat",
@@ -773,7 +773,7 @@ formBudgetUnknown:
                 "GRADIMO DA TRAJE.",
 
             studioDescription:
-                "KARTALOVIC LABS je nezavisni digitalni studio fokusiran na Android aplikacije, moderne web sajtove, digitalne proizvode i SEO optimizaciju. Biramo praktična rješenja, jasnu komunikaciju i proizvode koji stvarno rade, bez nepotrebnog komplikovanja.",
+                "KARTALOVIC LABS je nezavisni digitalni studio fokusiran na Android aplikacije, moderne web sajtove, digitalne proizvode i SEO optimizaciju. Biramo praktična rešenja, jasnu komunikaciju i proizvode koji stvarno rade, bez nepotrebnog komplikovanja.",
 
             workTogether:
                 "ZAPOČNIMO RAZGOVOR",
@@ -788,7 +788,7 @@ formBudgetUnknown:
                 "O NJOJ.",
 
             contactDescription:
-                "Ne morate imati tehničku specifikaciju niti gotov plan. Jednostavno nam svojim riječima opišite šta želite napraviti.",
+                "Ne morate imati tehničku specifikaciju niti gotov plan. Jednostavno nam svojim rečima opišite šta želite napraviti.",
 
             contactNote:
                 "Početni razgovor i osnovne informacije o projektu su besplatni. Bez obaveze da nastavite saradnju sa nama.",
@@ -808,7 +808,7 @@ formBudgetUnknown:
                 "SVOJU IDEJU.",
 
             contactPageIntro:
-                "Ne morate imati gotov plan, tehničku specifikaciju niti znanje programiranja. Svojim riječima nam opišite šta želite napraviti.",
+                "Ne morate imati gotov plan, tehničku specifikaciju niti znanje programiranja. Svojim rečima nam opišite šta želite napraviti.",
 
             contactProcessLabel:
                 "KAKO FUNKCIONIŠE",
@@ -841,7 +841,7 @@ formBudgetUnknown:
                 "Objasnićemo moguće naredne korake. Vi odlučujete da li želite nastaviti.",
 
             contactFree:
-                "Početni razgovor, procjena projekta i osnovne informacije su besplatni — bez obaveze da nastavite saradnju sa nama.",
+                "Početni razgovor, procena projekta i osnovne informacije su besplatni — bez obaveze da nastavite saradnju sa nama.",
 
             preferEmail:
                 "Više volite email?",
@@ -877,7 +877,7 @@ formBudgetUnknown:
                 "Digitalni proizvod",
 
             formNotSure:
-                "Još nisam siguran",
+                "Još ne znam",
 
             formBudget:
     "Okvirni budžet",
@@ -907,7 +907,7 @@ formBudgetUnknown:
                 "Opišite svoju ideju",
 
             formMessagePlaceholder:
-                "Opišite svoju ideju svojim riječima. Nije vam potrebno tehničko znanje.",
+                "Opišite svoju ideju svojim rečima. Nije vam potrebno tehničko znanje.",
 
             formHelper:
                 "Tehničko znanje nije potrebno. Dovoljan je jednostavan opis vaše ideje.",
@@ -916,13 +916,13 @@ formBudgetUnknown:
                 "Pošaljite upit",
 
             formPrivacy:
-                "Vaši podaci će biti korišteni samo za odgovor na vaš upit.",
+                "Vaši podaci će biti korišćeni samo za odgovor na vaš upit.",
 
             formSending:
                 "Šalje se...",
 
             formSuccess:
-                "Hvala. Vaš upit je uspješno poslan. Javićemo vam se uskoro.",
+                "Hvala. Vaš upit je uspešno poslat. Javićemo vam se uskoro.",
 
             formError:
                 "Došlo je do greške pri slanju. Pokušajte ponovo ili nam pišite direktno na kartaloviclabs@gmail.com.",
@@ -934,7 +934,7 @@ formBudgetUnknown:
                 "VAŠA IDEJA MOŽE BITI",
 
             contactFinalLine2:
-                "NAŠ SLJEDEĆI PROJEKAT.",
+                "NAŠ SLEDEĆI PROJEKAT.",
 
             privacy:
                 "Privatnost",
@@ -948,13 +948,13 @@ formBudgetUnknown:
                 "Razvoj Android aplikacija i web sajtova | KARTALOVIC LABS",
 
             metaDescHome:
-                "KARTALOVIC LABS razvija native Android aplikacije, moderne web sajtove i digitalne proizvode po mjeri — od prve ideje, preko dizajna i razvoja, do lansiranja.",
+                "KARTALOVIC LABS razvija native Android aplikacije, moderne web sajtove i digitalne proizvode po meri — od prve ideje, preko dizajna i razvoja, do lansiranja.",
 
             metaTitleContact:
                 "Kontakt | KARTALOVIC LABS — razgovarajmo o projektu",
 
             metaDescContact:
-                "Opišite nam svoju ideju za Android aplikaciju, web sajt ili digitalni proizvod. Početni razgovor i procjena su besplatni i bez obaveze.",
+                "Opišite nam svoju ideju za Android aplikaciju, web sajt ili digitalni proizvod. Početni razgovor i procena su besplatni i bez obaveze.",
 
             ariaHome: "KARTALOVIC LABS početna",
             ariaMainNav: "Glavna navigacija",
