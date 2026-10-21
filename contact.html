@@ -16,6 +16,7 @@
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KARTALOVIC LABS">
+    <meta property="og:locale" content="en_US">
     <meta property="og:title" content="Contact KARTALOVIC LABS | Discuss Your Project">
     <meta property="og:description" content="Tell us about your Android app, website or digital product idea. Get an initial project discussion and guidance, free and without obligation.">
     <meta property="og:url" content="https://kartaloviclabs.com/contact.html">
@@ -277,12 +278,12 @@
                 <div class="contact-process">
 
 
-                    <p
+                    <h2
                         class="section-label"
                         data-i18n="contactProcessLabel"
                     >
                         HOW IT WORKS
-                    </p>
+                    </h2>
 
 
                     <p
@@ -426,11 +427,15 @@
 
                     <div class="form-card-header">
 
-                        <span data-i18n="formHeader">
+                        <h2
+                            class="form-card-title"
+                            id="formCardTitle"
+                            data-i18n="formHeader"
+                        >
                             PROJECT INQUIRY
-                        </span>
+                        </h2>
 
-                        <span>
+                        <span aria-hidden="true">
                             01 / 01
                         </span>
 
@@ -441,6 +446,7 @@
                     <form
     class="project-form"
     id="projectInquiryForm"
+    aria-labelledby="formCardTitle"
     action="https://formspree.io/f/mljdbgpb"
     method="POST"
     autocomplete="on"

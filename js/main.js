@@ -335,6 +335,26 @@ formBudgetUnknown:
             osdpTopicLabel:
                 "BLOG TOPIC",
 
+            /* 404 PAGE */
+
+            metaTitle404:
+                "Page not found | KARTALOVIC LABS",
+
+            metaDesc404:
+                "The page you are looking for does not exist or has been moved.",
+
+            notFoundEyebrow:
+                "ERROR 404",
+
+            notFoundLine1:
+                "THIS PAGE",
+
+            notFoundLine2:
+                "DOESN'T EXIST.",
+
+            notFoundText:
+                "The link may be outdated or the address may have been mistyped. Go back to the homepage or tell us what you were looking for.",
+
             copyright: "© 2026 KARTALOVIC LABS. All rights reserved."
         },
 
@@ -712,6 +732,26 @@ formBudgetUnknown:
 
             osdpTopicLabel:
                 "BLOGTHEMA",
+
+            /* 404 PAGE */
+
+            metaTitle404:
+                "Seite nicht gefunden | KARTALOVIC LABS",
+
+            metaDesc404:
+                "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+
+            notFoundEyebrow:
+                "FEHLER 404",
+
+            notFoundLine1:
+                "DIESE SEITE",
+
+            notFoundLine2:
+                "GIBT ES NICHT.",
+
+            notFoundText:
+                "Der Link ist möglicherweise veraltet oder die Adresse wurde falsch eingegeben. Kehren Sie zur Startseite zurück oder sagen Sie uns, wonach Sie gesucht haben.",
 
             copyright: "© 2026 KARTALOVIC LABS. Alle Rechte vorbehalten."
         },
@@ -1095,6 +1135,26 @@ formBudgetUnknown:
 
             osdpTopicLabel:
                 "TEMA BLOGA",
+
+            /* 404 PAGE */
+
+            metaTitle404:
+                "Stranica nije pronađena | KARTALOVIC LABS",
+
+            metaDesc404:
+                "Stranica koju tražite ne postoji ili je premeštena.",
+
+            notFoundEyebrow:
+                "GREŠKA 404",
+
+            notFoundLine1:
+                "OVA STRANICA",
+
+            notFoundLine2:
+                "NE POSTOJI.",
+
+            notFoundText:
+                "Link je možda zastareo ili je adresa pogrešno upisana. Vratite se na početnu stranu ili nam recite šta ste tražili.",
 
             copyright: "© 2026 KARTALOVIC LABS. Sva prava zadržana."
         }
@@ -1858,6 +1918,11 @@ formBudgetUnknown:
        SUBTLE PROJECT PARALLAX
        ===================================================== */
 
+    /* Parallax writes the individual `translate` property, while the
+       scroll reveal animates `transform` with a 0.9s transition. The two
+       compose instead of overwriting each other, and the parallax is not
+       slowed down by the reveal transition. */
+
     const projectShowcase =
         document.querySelector(
             ".project-showcase"
@@ -1868,12 +1933,20 @@ formBudgetUnknown:
         "scroll",
         () => {
 
+            if (!projectShowcase) {
+                return;
+            }
+
+
             if (
-                !projectShowcase ||
                 window.innerWidth < 800 ||
                 prefersReducedMotion()
             ) {
+
+                projectShowcase.style.translate = "";
+
                 return;
+
             }
 
 
@@ -1909,8 +1982,8 @@ formBudgetUnknown:
                 (progress - 0.5) * 24;
 
 
-            projectShowcase.style.transform =
-                `translateY(${movement}px)`;
+            projectShowcase.style.translate =
+                `0 ${movement}px`;
 
         },
 

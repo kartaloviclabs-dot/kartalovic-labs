@@ -9,6 +9,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KARTALOVIC LABS">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Legal Notice / Imprint | KARTALOVIC LABS">
 <meta property="og:description" content="Provider details, contact information and legal notice for the KARTALOVIC LABS website.">
 <meta property="og:url" content="https://kartaloviclabs.com/impressum.html">
@@ -108,6 +109,12 @@
     de: { contact: "Kontakt", privacy: "Datenschutz", imprint: "Impressum", copyright: "© 2026 KARTALOVIC LABS. Alle Rechte vorbehalten.", ariaHome: "KARTALOVIC LABS Startseite", ariaLanguage: "Sprache" },
     sr: { contact: "Kontakt", privacy: "Privatnost", imprint: "Impresum", copyright: "© 2026 KARTALOVIC LABS. Sva prava zadržana.", ariaHome: "KARTALOVIC LABS početna", ariaLanguage: "Jezik" }
   };
+  // Page title and meta description per language (metadata only).
+  const pageMeta = {
+    en: { title: "Legal Notice / Imprint | KARTALOVIC LABS", description: "Provider details, contact information and legal notice for the KARTALOVIC LABS website." },
+    de: { title: "Impressum | KARTALOVIC LABS", description: "Anbieterkennzeichnung, Kontaktdaten und rechtliche Hinweise zur Website von KARTALOVIC LABS." },
+    sr: { title: "Impresum | KARTALOVIC LABS", description: "Podaci o vlasniku sajta, kontakt i pravne informacije za KARTALOVIC LABS web sajt." }
+  };
   const buttons = document.querySelectorAll("[data-legal-lang]");
   const panels = document.querySelectorAll("[data-legal-panel]");
   function readStoredLanguage() {
@@ -129,6 +136,9 @@
     document.querySelectorAll("[data-legal-i18n]").forEach(el => el.textContent = chrome[lang][el.dataset.legalI18n]);
     document.querySelectorAll("[data-legal-i18n-aria-label]").forEach(el => el.setAttribute("aria-label", chrome[lang][el.dataset.legalI18nAriaLabel]));
     document.documentElement.lang = lang === "sr" ? "sr-Latn" : lang;
+    document.title = pageMeta[lang].title;
+    const description = document.querySelector('meta[name="description"]');
+    if (description) description.setAttribute("content", pageMeta[lang].description);
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch (error) {

@@ -4123,3 +4123,207 @@ html:lang(sr) .studio-manifesto h2 {
         gap: 10px;
     }
 }
+
+
+/* =========================================================
+   CONTACT FORM — CARD TITLE
+   Real h2 for the heading outline; looks like the old label.
+========================================================= */
+
+.form-card-title {
+    margin: 0;
+
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+}
+
+
+/* =========================================================
+   TOUCH TARGETS
+   Invisible hit areas around small links and language buttons.
+   Absolutely positioned, so the visible layout does not change.
+========================================================= */
+
+.lang-btn,
+.footer-nav a,
+.footer-email,
+.footer-legal a {
+    position: relative;
+}
+
+.lang-btn::before,
+.footer-nav a::before,
+.footer-email::before,
+.footer-legal a::before {
+    content: "";
+
+    position: absolute;
+}
+
+/* ~15x30 visible -> ~29x44 hit area (15px gap between buttons) */
+.lang-btn::before {
+    inset: -7px;
+}
+
+/* 15px tall -> 39px; 25px row/column gap keeps areas apart */
+.footer-nav a::before {
+    inset: -12px -8px;
+}
+
+.footer-email::before {
+    inset: -12px 0;
+}
+
+/* 27px tall (6px padding) -> 43px */
+.footer-legal a::before {
+    inset: -8px -6px;
+}
+
+@media (max-width: 380px) {
+
+    /* header gap is 10px here */
+    .site-header .lang-btn::before {
+        inset: -7px -5px;
+    }
+}
+
+
+/* =========================================================
+   404 PAGE
+========================================================= */
+
+.not-found-page {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle at 78% 10%,
+            rgba(40, 92, 190, 0.13),
+            transparent 30%
+        ),
+        #05070a;
+}
+
+.not-found-page .site-header {
+    position: absolute;
+}
+
+.not-found {
+    flex: 1;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        175px
+        clamp(28px, 5vw, 90px)
+        110px;
+
+    overflow: hidden;
+}
+
+.not-found::before {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    right: -180px;
+    top: -260px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(49, 112, 255, 0.16),
+            transparent 67%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+.not-found-inner {
+    width: min(100%, var(--max-width));
+
+    margin: 0 auto;
+
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    align-items: end;
+
+    gap: clamp(40px, 6vw, 110px);
+}
+
+.not-found-code {
+    font-family: var(--font-display);
+    font-size: clamp(120px, 20vw, 320px);
+    font-weight: 800;
+
+    line-height: 0.8;
+    letter-spacing: -0.07em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #438aff,
+            #a5c6ff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    opacity: 0.9;
+
+    user-select: none;
+}
+
+.not-found .contact-page-title {
+    max-width: 900px;
+}
+
+.not-found .hero-actions {
+    margin-top: 42px;
+}
+
+@media (max-width: 900px) {
+
+    .not-found-inner {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .not-found-code {
+        order: -1;
+
+        font-size: clamp(96px, 30vw, 180px);
+    }
+}
+
+@media (max-width: 700px) {
+
+    .not-found {
+        padding:
+            125px
+            20px
+            75px;
+    }
+}
