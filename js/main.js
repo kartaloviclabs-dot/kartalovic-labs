@@ -300,6 +300,41 @@ formBudgetUnknown:
             formSeo: "SEO optimization",
             formPrivacyLink: "Privacy policy",
 
+            /* PORTFOLIO — OD SLOVA DO PRIČE */
+
+            osdpLabel:
+                "EDUCATIONAL WEBSITE",
+
+            statusInDevelopment:
+                "In development",
+
+            osdpDescription:
+                "An educational blog for parents and for primary and secondary school students, focused on learning, reading, writing, emotions and motivation. KARTALOVIC LABS is designing and developing the website for this separate educational brand, with a calm, readable layout and content organised by topic.",
+
+            osdpStatusNote:
+                "The website is in development. The first articles are currently being prepared.",
+
+            visitWebsite:
+                "Visit website",
+
+            osdpImageAlt:
+                "Homepage of the Od slova do priče educational blog in a browser window",
+
+            osdpTopic1:
+                "SCHOOL & EMOTIONS",
+
+            osdpTopic2:
+                "READING & WRITING",
+
+            osdpTopic3:
+                "PARENT TIPS",
+
+            osdpTopic4:
+                "MOTIVATION",
+
+            osdpTopicLabel:
+                "BLOG TOPIC",
+
             copyright: "© 2026 KARTALOVIC LABS. All rights reserved."
         },
 
@@ -642,6 +677,41 @@ formBudgetUnknown:
 
             formSeo: "SEO-Optimierung",
             formPrivacyLink: "Datenschutzerklärung",
+
+            /* PORTFOLIO — OD SLOVA DO PRIČE */
+
+            osdpLabel:
+                "BILDUNGSWEBSITE",
+
+            statusInDevelopment:
+                "In Entwicklung",
+
+            osdpDescription:
+                "Ein Bildungsblog für Eltern sowie Schülerinnen und Schüler der Grund- und weiterführenden Schulen — mit Themen rund um Lernen, Lesen, Schreiben, Emotionen und Motivation. KARTALOVIC LABS gestaltet und entwickelt die Website für diese eigenständige Bildungsmarke: ruhig, gut lesbar und klar nach Themen gegliedert.",
+
+            osdpStatusNote:
+                "Die Website befindet sich in Entwicklung. Die ersten Artikel werden derzeit vorbereitet.",
+
+            visitWebsite:
+                "Website besuchen",
+
+            osdpImageAlt:
+                "Startseite des Bildungsblogs „Od slova do priče“ in einem Browserfenster",
+
+            osdpTopic1:
+                "SCHULE & EMOTIONEN",
+
+            osdpTopic2:
+                "LESEN & SCHREIBEN",
+
+            osdpTopic3:
+                "TIPPS FÜR ELTERN",
+
+            osdpTopic4:
+                "MOTIVATION",
+
+            osdpTopicLabel:
+                "BLOGTHEMA",
 
             copyright: "© 2026 KARTALOVIC LABS. Alle Rechte vorbehalten."
         },
@@ -990,6 +1060,41 @@ formBudgetUnknown:
 
             formSeo: "SEO optimizacija",
             formPrivacyLink: "Politika privatnosti",
+
+            /* PORTFOLIO — OD SLOVA DO PRIČE */
+
+            osdpLabel:
+                "EDUKATIVNI WEB SAJT",
+
+            statusInDevelopment:
+                "U razvoju",
+
+            osdpDescription:
+                "Edukativni blog za roditelje i učenike osnovnih i srednjih škola, posvećen učenju, čitanju, pisanju, emocijama i motivaciji. KARTALOVIC LABS dizajnira i razvija sajt za ovaj zaseban edukativni brend — miran, čitljiv dizajn i sadržaj jasno organizovan po temama.",
+
+            osdpStatusNote:
+                "Sajt je u razvoju. Prvi članci su trenutno u pripremi.",
+
+            visitWebsite:
+                "Posetite sajt",
+
+            osdpImageAlt:
+                "Početna strana edukativnog bloga „Od slova do priče“ u prozoru pregledača",
+
+            osdpTopic1:
+                "ŠKOLA I EMOCIJE",
+
+            osdpTopic2:
+                "ČITANJE I PISANJE",
+
+            osdpTopic3:
+                "SAVETI RODITELJIMA",
+
+            osdpTopic4:
+                "MOTIVACIJA",
+
+            osdpTopicLabel:
+                "TEMA BLOGA",
 
             copyright: "© 2026 KARTALOVIC LABS. Sva prava zadržana."
         }

@@ -14,10 +14,21 @@
     <meta property="og:title" content="Android App &amp; Web Development | KARTALOVIC LABS">
     <meta property="og:description" content="KARTALOVIC LABS builds native Android apps, modern websites and custom digital products. From your first idea through design, development and launch.">
     <meta property="og:url" content="https://kartaloviclabs.com/">
+    <meta property="og:image" content="https://kartaloviclabs.com/assets/brand/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="KARTALOVIC LABS — We turn ideas into digital products. Android apps, websites, digital products and SEO.">
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Android App &amp; Web Development | KARTALOVIC LABS">
     <meta name="twitter:description" content="KARTALOVIC LABS builds native Android apps, modern websites and custom digital products. From your first idea through design, development and launch.">
+    <meta name="twitter:image" content="https://kartaloviclabs.com/assets/brand/og-image.jpg">
+    <meta name="twitter:image:alt" content="KARTALOVIC LABS — We turn ideas into digital products. Android apps, websites, digital products and SEO.">
+
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/icon-192.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -707,13 +718,28 @@
 
                     <div class="retroloop-showcase-wrap">
 
-                        <img
-                            class="retroloop-showcase-image"
-                            src="assets/projects/retroloop/retroloop-showcase.png"
-                            alt="RetroLoop Android application showing gameplay, home screen and controller configuration"
-                            data-i18n-alt="retroloopImageAlt"
-                            loading="lazy"
-                        >
+                        <picture>
+
+                            <source
+                                type="image/webp"
+                                srcset="assets/projects/retroloop/retroloop-showcase-768.webp 768w,
+                                        assets/projects/retroloop/retroloop-showcase-1024.webp 1024w,
+                                        assets/projects/retroloop/retroloop-showcase-1536.webp 1536w"
+                                sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) min(850px, calc(100vw - 56px)), min(900px, 52vw)"
+                            >
+
+                            <img
+                                class="retroloop-showcase-image"
+                                src="assets/projects/retroloop/retroloop-showcase.png"
+                                width="1536"
+                                height="1024"
+                                alt="RetroLoop Android application showing gameplay, home screen and controller configuration"
+                                data-i18n-alt="retroloopImageAlt"
+                                loading="lazy"
+                                decoding="async"
+                            >
+
+                        </picture>
 
                     </div>
 
@@ -790,6 +816,168 @@
                     <span class="retroloop-detail-text" data-i18n="retroloopPatchText">
                         BUILT IN
                     </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 SECOND PROJECT — OD SLOVA DO PRIČE
+                 Reuses the RetroLoop card classes so both projects match.
+            ============================================== -->
+
+            <div class="work-project-next">
+
+                <div class="work-layout">
+
+                    <div class="work-copy">
+
+                        <div class="project-meta">
+
+                            <p
+                                class="section-label"
+                                data-i18n="osdpLabel"
+                            >
+                                EDUCATIONAL WEBSITE
+                            </p>
+
+                            <span
+                                class="project-status"
+                                data-i18n="statusInDevelopment"
+                            >
+                                In development
+                            </span>
+
+                        </div>
+
+
+                        <h2 class="project-title-long">
+                            OD SLOVA DO PRIČE
+                        </h2>
+
+
+                        <p
+                            class="project-tagline"
+                            lang="sr-Latn"
+                        >
+                            O ŠKOLI, DECI I SVEMU ŠTO OCENE NE GOVORE.
+                        </p>
+
+
+                        <p
+                            class="project-description"
+                            data-i18n="osdpDescription"
+                        >
+                            An educational blog for parents and for primary and secondary
+                            school students, focused on learning, reading, writing,
+                            emotions and motivation. KARTALOVIC LABS is designing and
+                            developing the website for this separate educational brand,
+                            with a calm, readable layout and content organised by topic.
+                        </p>
+
+
+                        <p
+                            class="project-note"
+                            data-i18n="osdpStatusNote"
+                        >
+                            The website is in development. The first articles are
+                            currently being prepared.
+                        </p>
+
+
+                        <div class="project-tech">
+
+                            <span>Astro</span>
+                            <span>Responsive design</span>
+                            <span>Blog</span>
+                            <span>RSS</span>
+
+                        </div>
+
+
+                        <a
+                            class="button button-outline"
+                            href="https://odslovadoprice.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            <span data-i18n="visitWebsite">
+                                Visit website
+                            </span>
+
+                            <span aria-hidden="true">
+                                ↗
+                            </span>
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="project-showcase">
+
+                        <div class="project-light"></div>
+
+
+                        <div class="retroloop-showcase-wrap">
+
+                            <picture>
+
+                                <source
+                                    type="image/webp"
+                                    srcset="assets/projects/odslovadoprice/odslovadoprice-showcase-768.webp 768w,
+                                            assets/projects/odslovadoprice/odslovadoprice-showcase-1024.webp 1024w,
+                                            assets/projects/odslovadoprice/odslovadoprice-showcase-1536.webp 1536w"
+                                    sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) min(850px, calc(100vw - 56px)), min(900px, 52vw)"
+                                >
+
+                                <img
+                                    class="retroloop-showcase-image"
+                                    src="assets/projects/odslovadoprice/odslovadoprice-showcase-1024.webp"
+                                    width="1536"
+                                    height="1024"
+                                    alt="Homepage of the Od slova do priče educational blog in a browser window"
+                                    data-i18n-alt="osdpImageAlt"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+
+                            </picture>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="retroloop-details">
+
+                    <div class="retroloop-detail">
+                        <span class="retroloop-detail-number">01</span>
+                        <span class="retroloop-detail-title" data-i18n="osdpTopic1">SCHOOL &amp; EMOTIONS</span>
+                        <span class="retroloop-detail-text" data-i18n="osdpTopicLabel">BLOG TOPIC</span>
+                    </div>
+
+                    <div class="retroloop-detail">
+                        <span class="retroloop-detail-number">02</span>
+                        <span class="retroloop-detail-title" data-i18n="osdpTopic2">READING &amp; WRITING</span>
+                        <span class="retroloop-detail-text" data-i18n="osdpTopicLabel">BLOG TOPIC</span>
+                    </div>
+
+                    <div class="retroloop-detail">
+                        <span class="retroloop-detail-number">03</span>
+                        <span class="retroloop-detail-title" data-i18n="osdpTopic3">PARENT TIPS</span>
+                        <span class="retroloop-detail-text" data-i18n="osdpTopicLabel">BLOG TOPIC</span>
+                    </div>
+
+                    <div class="retroloop-detail">
+                        <span class="retroloop-detail-number">04</span>
+                        <span class="retroloop-detail-title" data-i18n="osdpTopic4">MOTIVATION</span>
+                        <span class="retroloop-detail-text" data-i18n="osdpTopicLabel">BLOG TOPIC</span>
+                    </div>
 
                 </div>
 

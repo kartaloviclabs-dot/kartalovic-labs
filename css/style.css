@@ -3982,11 +3982,144 @@ html:lang(sr) .studio-manifesto h2 {
         padding-bottom: 80px;
     }
 
+    /* 12vw keeps single long words such as "DATENSCHUTZ." inside 320px. */
     .legal-title {
-        font-size: clamp(2.65rem, 15vw, 4.8rem);
+        font-size: clamp(2.2rem, 12vw, 4.8rem);
     }
 
     .legal-card {
         padding: 26px 0;
+    }
+}
+
+
+/* =========================================================
+   CONTACT FORM — SPAM TRAP (Formspree _gotcha honeypot)
+   Kept in the DOM for bots, moved off-screen for people.
+========================================================= */
+
+.form-trap {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+
+    width: 1px;
+    height: 1px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PORTFOLIO — SECOND PROJECT
+   Reuses the RetroLoop card classes; only the extras live here.
+========================================================= */
+
+.work-project-next {
+    width: min(100%, var(--max-width));
+
+    margin: clamp(110px, 11vw, 180px) auto 0;
+    padding-top: clamp(90px, 9vw, 150px);
+
+    border-top: 1px solid var(--line);
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: 12px 16px;
+}
+
+.project-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 6px 12px;
+
+    border: 1px solid rgba(84, 148, 255, 0.4);
+    border-radius: 999px;
+
+    color: #a9c6ff;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.project-status::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #f2b46b;
+
+    box-shadow: 0 0 10px rgba(242, 180, 107, 0.7);
+}
+
+/* The name always contains "Č": extra line height keeps the caron
+   clear of the line above (same fix as the Serbian headings). */
+.work-copy h2.project-title-long {
+    font-size: clamp(48px, 4.8vw, 88px);
+
+    line-height: 1.08;
+}
+
+.project-note {
+    max-width: 530px;
+
+    margin-top: 16px;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+
+    .work-copy h2.project-title-long {
+        font-size: 13vw;
+    }
+}
+
+
+/* =========================================================
+   NARROW PHONES — keep "KARTALOVIC LABS" on one line
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .site-header {
+        padding: 0 16px;
+    }
+
+    .site-header .brand {
+        gap: 10px;
+    }
+
+    .site-header .brand-name,
+    .site-header .brand-tagline {
+        white-space: nowrap;
+    }
+
+    .site-header .brand-tagline {
+        letter-spacing: 0.2em;
+    }
+
+    .site-header .header-actions {
+        margin-right: 6px;
+    }
+
+    .site-header .language-switcher {
+        gap: 10px;
     }
 }
