@@ -20,7 +20,7 @@
 </head>
 <body class="legal-page">
 <header class="site-header">
-    <a class="brand" href="/" aria-label="KARTALOVIC LABS home">
+    <a class="brand" href="/" aria-label="KARTALOVIC LABS home" data-legal-i18n-aria-label="ariaHome">
         <span class="brand-mark">K</span>
         <span class="brand-copy">
             <span class="brand-name">KARTALOVIC LABS</span>
@@ -28,12 +28,12 @@
         </span>
     </a>
     <div class="header-actions">
-        <div class="language-switcher" aria-label="Language">
-            <button class="lang-btn active" type="button" data-legal-lang="en">EN</button>
-            <button class="lang-btn" type="button" data-legal-lang="de">DE</button>
-            <button class="lang-btn" type="button" data-legal-lang="sr">SR</button>
+        <div class="language-switcher" role="group" aria-label="Language" data-legal-i18n-aria-label="ariaLanguage">
+            <button class="lang-btn active" type="button" data-legal-lang="en" aria-label="English" lang="en">EN</button>
+            <button class="lang-btn" type="button" data-legal-lang="de" aria-label="Deutsch" lang="de">DE</button>
+            <button class="lang-btn" type="button" data-legal-lang="sr" aria-label="Srpski" lang="sr-Latn">SR</button>
         </div>
-        <a class="header-cta" href="contact.html"><span>Contact</span><span aria-hidden="true">↗</span></a>
+        <a class="header-cta" href="contact.html"><span data-legal-i18n="contact">Contact</span><span aria-hidden="true">↗</span></a>
     </div>
 </header>
 <main class="legal-shell">
@@ -86,25 +86,52 @@
     </div>
     <a class="footer-email" href="mailto:kartaloviclabs@gmail.com">kartaloviclabs@gmail.com</a>
     <div class="footer-bottom">
-        <p>© 2026 KARTALOVIC LABS. All rights reserved.</p>
+        <p data-legal-i18n="copyright">© 2026 KARTALOVIC LABS. All rights reserved.</p>
         <div class="footer-legal">
-            <a href="privacy.html">Privacy</a>
-            <a href="impressum.html">Imprint</a>
+            <a href="privacy.html" data-legal-i18n="privacy">Privacy</a>
+            <a href="impressum.html" data-legal-i18n="imprint">Imprint</a>
         </div>
     </div>
 </footer>
 <script>
 (() => {
+  const SUPPORTED = ["en", "de", "sr"];
+  const STORAGE_KEY = "kartalovicLabsLanguage";
+  // Site chrome only; the legal text itself lives in the panels above.
+  const chrome = {
+    en: { contact: "Contact", privacy: "Privacy", imprint: "Imprint", copyright: "© 2026 KARTALOVIC LABS. All rights reserved.", ariaHome: "KARTALOVIC LABS home", ariaLanguage: "Language" },
+    de: { contact: "Kontakt", privacy: "Datenschutz", imprint: "Impressum", copyright: "© 2026 KARTALOVIC LABS. Alle Rechte vorbehalten.", ariaHome: "KARTALOVIC LABS Startseite", ariaLanguage: "Sprache" },
+    sr: { contact: "Kontakt", privacy: "Privatnost", imprint: "Impresum", copyright: "© 2026 KARTALOVIC LABS. Sva prava zadržana.", ariaHome: "KARTALOVIC LABS početna", ariaLanguage: "Jezik" }
+  };
   const buttons = document.querySelectorAll("[data-legal-lang]");
   const panels = document.querySelectorAll("[data-legal-panel]");
+  function readStoredLanguage() {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return SUPPORTED.includes(stored) ? stored : null;
+    } catch (error) {
+      return null;
+    }
+  }
   function setLegalLanguage(lang) {
+    if (!SUPPORTED.includes(lang)) lang = "en";
     panels.forEach(p => p.hidden = p.dataset.legalPanel !== lang);
-    buttons.forEach(b => b.classList.toggle("active", b.dataset.legalLang === lang));
+    buttons.forEach(b => {
+      const active = b.dataset.legalLang === lang;
+      b.classList.toggle("active", active);
+      b.setAttribute("aria-pressed", String(active));
+    });
+    document.querySelectorAll("[data-legal-i18n]").forEach(el => el.textContent = chrome[lang][el.dataset.legalI18n]);
+    document.querySelectorAll("[data-legal-i18n-aria-label]").forEach(el => el.setAttribute("aria-label", chrome[lang][el.dataset.legalI18nAriaLabel]));
     document.documentElement.lang = lang === "sr" ? "sr-Latn" : lang;
-    localStorage.setItem("kartalovicLabsLanguage", lang);
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch (error) {
+      // Language still applies for this page view.
+    }
   }
   buttons.forEach(b => b.addEventListener("click", () => setLegalLanguage(b.dataset.legalLang)));
-  setLegalLanguage(localStorage.getItem("kartalovicLabsLanguage") || "en");
+  setLegalLanguage(readStoredLanguage() || "en");
 })();
 </script>
 </body>

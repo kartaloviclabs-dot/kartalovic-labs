@@ -249,7 +249,58 @@ formBudgetUnknown:
                 "THE NEXT PROJECT.",
 
             privacy: "Privacy",
-            imprint: "Imprint"
+            imprint: "Imprint",
+
+            /* META / ACCESSIBILITY / REMAINING UI */
+
+            metaTitleHome:
+                "Android App & Web Development | KARTALOVIC LABS",
+
+            metaDescHome:
+                "KARTALOVIC LABS builds native Android apps, modern websites and custom digital products. From your first idea through design, development and launch.",
+
+            metaTitleContact:
+                "Contact KARTALOVIC LABS | Discuss Your Project",
+
+            metaDescContact:
+                "Tell us about your Android app, website or digital product idea. Get an initial project discussion and guidance, free and without obligation.",
+
+            ariaHome: "KARTALOVIC LABS home",
+            ariaMainNav: "Main navigation",
+            ariaFooterNav: "Footer navigation",
+            ariaLanguage: "Language",
+            menuOpen: "Open menu",
+            menuClose: "Close menu",
+
+            servicesHeadingDigital: "DIGITAL",
+            servicesHeadingProducts: "PRODUCTS",
+
+            statementIdea: "IDEA.",
+            statementBuild: "BUILD.",
+            statementLaunch: "LAUNCH.",
+
+            retroloopImageAlt:
+                "RetroLoop Android application showing gameplay, home screen and controller configuration",
+
+            retroloopControllerTitle: "CONTROLLER",
+            retroloopControllerText: "CUSTOM MAPPING",
+            retroloopSaveText: "PLAY ANYTIME",
+            retroloopPatchText: "BUILT IN",
+
+            principleIdeas: "IDEAS",
+            principleStrategy: "STRATEGY",
+            principleDesign: "DESIGN",
+            principleDevelopment: "DEVELOPMENT",
+            principleLaunch: "LAUNCH",
+
+            sideEurope: "EUROPE",
+            sideAnd: "AND",
+            sideBeyond: "BEYOND.",
+
+            formSeo: "SEO optimization",
+            formPrivacyLink: "Privacy policy",
+
+            copyright: "© 2026 KARTALOVIC LABS. All rights reserved."
         },
 
 
@@ -541,7 +592,58 @@ formBudgetUnknown:
                 "Datenschutz",
 
             imprint:
-                "Impressum"
+                "Impressum",
+
+            /* META / ACCESSIBILITY / REMAINING UI */
+
+            metaTitleHome:
+                "Android-App- & Webentwicklung | KARTALOVIC LABS",
+
+            metaDescHome:
+                "KARTALOVIC LABS entwickelt native Android-Apps, moderne Websites und individuelle digitale Produkte — von der ersten Idee über Design und Entwicklung bis zum Launch.",
+
+            metaTitleContact:
+                "Kontakt | KARTALOVIC LABS — Projekt besprechen",
+
+            metaDescContact:
+                "Erzählen Sie uns von Ihrer Idee für eine Android-App, eine Website oder ein digitales Produkt. Das erste Gespräch und eine Einschätzung sind kostenlos und unverbindlich.",
+
+            ariaHome: "KARTALOVIC LABS Startseite",
+            ariaMainNav: "Hauptnavigation",
+            ariaFooterNav: "Navigation in der Fußzeile",
+            ariaLanguage: "Sprache",
+            menuOpen: "Menü öffnen",
+            menuClose: "Menü schließen",
+
+            servicesHeadingDigital: "DIGITALE",
+            servicesHeadingProducts: "PRODUKTE",
+
+            statementIdea: "IDEE.",
+            statementBuild: "ENTWICKLUNG.",
+            statementLaunch: "LAUNCH.",
+
+            retroloopImageAlt:
+                "RetroLoop Android-App mit Gameplay, Startbildschirm und Controller-Konfiguration",
+
+            retroloopControllerTitle: "CONTROLLER",
+            retroloopControllerText: "EIGENE TASTENBELEGUNG",
+            retroloopSaveText: "JEDERZEIT WEITERSPIELEN",
+            retroloopPatchText: "INTEGRIERT",
+
+            principleIdeas: "IDEEN",
+            principleStrategy: "STRATEGIE",
+            principleDesign: "DESIGN",
+            principleDevelopment: "ENTWICKLUNG",
+            principleLaunch: "LAUNCH",
+
+            sideEurope: "EUROPA",
+            sideAnd: "UND",
+            sideBeyond: "DARÜBER HINAUS.",
+
+            formSeo: "SEO-Optimierung",
+            formPrivacyLink: "Datenschutzerklärung",
+
+            copyright: "© 2026 KARTALOVIC LABS. Alle Rechte vorbehalten."
         },
 
 
@@ -838,7 +940,58 @@ formBudgetUnknown:
                 "Privatnost",
 
             imprint:
-                "Impresum"
+                "Impresum",
+
+            /* META / ACCESSIBILITY / REMAINING UI */
+
+            metaTitleHome:
+                "Razvoj Android aplikacija i web sajtova | KARTALOVIC LABS",
+
+            metaDescHome:
+                "KARTALOVIC LABS razvija native Android aplikacije, moderne web sajtove i digitalne proizvode po mjeri — od prve ideje, preko dizajna i razvoja, do lansiranja.",
+
+            metaTitleContact:
+                "Kontakt | KARTALOVIC LABS — razgovarajmo o projektu",
+
+            metaDescContact:
+                "Opišite nam svoju ideju za Android aplikaciju, web sajt ili digitalni proizvod. Početni razgovor i procjena su besplatni i bez obaveze.",
+
+            ariaHome: "KARTALOVIC LABS početna",
+            ariaMainNav: "Glavna navigacija",
+            ariaFooterNav: "Navigacija u podnožju",
+            ariaLanguage: "Jezik",
+            menuOpen: "Otvori meni",
+            menuClose: "Zatvori meni",
+
+            servicesHeadingDigital: "DIGITALNI",
+            servicesHeadingProducts: "PROIZVODI",
+
+            statementIdea: "IDEJA.",
+            statementBuild: "RAZVOJ.",
+            statementLaunch: "LANSIRANJE.",
+
+            retroloopImageAlt:
+                "RetroLoop Android aplikacija: igra, početni ekran i podešavanje kontrolera",
+
+            retroloopControllerTitle: "KONTROLERI",
+            retroloopControllerText: "PRILAGOĐENO MAPIRANJE",
+            retroloopSaveText: "IGRAJTE BILO KADA",
+            retroloopPatchText: "UGRAĐENO",
+
+            principleIdeas: "IDEJE",
+            principleStrategy: "STRATEGIJA",
+            principleDesign: "DIZAJN",
+            principleDevelopment: "RAZVOJ",
+            principleLaunch: "LANSIRANJE",
+
+            sideEurope: "EVROPA",
+            sideAnd: "I",
+            sideBeyond: "ŠIRE.",
+
+            formSeo: "SEO optimizacija",
+            formPrivacyLink: "Politika privatnosti",
+
+            copyright: "© 2026 KARTALOVIC LABS. Sva prava zadržana."
         }
     };
 
@@ -847,20 +1000,84 @@ formBudgetUnknown:
        LANGUAGE SYSTEM
        ===================================================== */
 
+    const SUPPORTED_LANGUAGES =
+        ["en", "de", "sr"];
+
+    const LANGUAGE_STORAGE_KEY =
+        "kartalovicLabsLanguage";
+
+
+    /* Attributes translated from data-i18n-* keys */
+
+    const translatedAttributes = {
+        "data-i18n-placeholder": "placeholder",
+        "data-i18n-aria-label": "aria-label",
+        "data-i18n-alt": "alt",
+        "data-i18n-content": "content"
+    };
+
+
     const languageButtons =
         document.querySelectorAll(".lang-btn");
 
 
+    function isSupportedLanguage(language) {
+
+        return SUPPORTED_LANGUAGES.includes(language);
+
+    }
+
+
+    /* localStorage can throw when storage is blocked */
+
+    function readStoredLanguage() {
+
+        try {
+
+            const stored =
+                localStorage.getItem(LANGUAGE_STORAGE_KEY);
+
+            return isSupportedLanguage(stored)
+                ? stored
+                : null;
+
+        } catch (error) {
+
+            return null;
+
+        }
+
+    }
+
+
+    function storeLanguage(language) {
+
+        try {
+
+            localStorage.setItem(
+                LANGUAGE_STORAGE_KEY,
+                language
+            );
+
+        } catch (error) {
+            /* Language still applies for this page view. */
+        }
+
+    }
+
+
     let currentLanguage =
-        localStorage.getItem(
-            "kartalovicLabsLanguage"
-        ) || "en";
+        readStoredLanguage() || "en";
 
 
     function setLanguage(language) {
 
+        if (!isSupportedLanguage(language)) {
+            language = "en";
+        }
+
         const selected =
-            translations[language] || translations.en;
+            translations[language];
 
 
         currentLanguage = language;
@@ -885,21 +1102,29 @@ formBudgetUnknown:
             });
 
 
-        /* INPUT / TEXTAREA PLACEHOLDERS */
+        /* PLACEHOLDERS, ARIA LABELS, ALT TEXT, META CONTENT */
 
-        document
-            .querySelectorAll("[data-i18n-placeholder]")
-            .forEach(element => {
+        Object
+            .entries(translatedAttributes)
+            .forEach(([sourceAttribute, attribute]) => {
 
-                const key =
-                    element.dataset.i18nPlaceholder;
+                document
+                    .querySelectorAll(`[${sourceAttribute}]`)
+                    .forEach(element => {
 
-                if (selected[key]) {
+                        const key =
+                            element.getAttribute(sourceAttribute);
 
-                    element.placeholder =
-                        selected[key];
+                        if (selected[key]) {
 
-                }
+                            element.setAttribute(
+                                attribute,
+                                selected[key]
+                            );
+
+                        }
+
+                    });
 
             });
 
@@ -908,12 +1133,23 @@ formBudgetUnknown:
 
         languageButtons.forEach(button => {
 
+            const isActive =
+                button.dataset.lang === language;
+
             button.classList.toggle(
                 "active",
-                button.dataset.lang === language
+                isActive
+            );
+
+            button.setAttribute(
+                "aria-pressed",
+                String(isActive)
             );
 
         });
+
+
+        updateMenuToggleLabel();
 
 
         /* HTML LANGUAGE */
@@ -926,9 +1162,34 @@ formBudgetUnknown:
 
         /* SAVE LANGUAGE */
 
-        localStorage.setItem(
-            "kartalovicLabsLanguage",
-            language
+        storeLanguage(language);
+
+    }
+
+
+    /* Reads the toggle state from the DOM so it can run before the
+       mobile menu section below is initialised. */
+
+    function updateMenuToggleLabel() {
+
+        const toggle =
+            document.querySelector(".menu-toggle");
+
+        if (!toggle) {
+            return;
+        }
+
+        const selected =
+            translations[currentLanguage];
+
+        const isOpen =
+            toggle.getAttribute("aria-expanded") === "true";
+
+        toggle.setAttribute(
+            "aria-label",
+            isOpen
+                ? selected.menuClose
+                : selected.menuOpen
         );
 
     }
@@ -954,6 +1215,23 @@ formBudgetUnknown:
 
 
     /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+
+    const reducedMotionQuery =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
+
+    function prefersReducedMotion() {
+
+        return reducedMotionQuery.matches;
+
+    }
+
+
+    /* =====================================================
        PREMIUM SCROLL REVEAL
        ===================================================== */
 
@@ -976,57 +1254,67 @@ formBudgetUnknown:
         );
 
 
-    revealElements.forEach(element => {
+    /* With reduced motion (or no IntersectionObserver) content
+       simply stays visible. */
 
-        element.style.opacity = "0";
+    if (
+        !prefersReducedMotion() &&
+        "IntersectionObserver" in window
+    ) {
 
-        element.style.transform =
-            "translateY(45px)";
+        revealElements.forEach(element => {
 
-        element.style.transition =
-            "opacity 0.9s cubic-bezier(.2,.7,.2,1), " +
-            "transform 0.9s cubic-bezier(.2,.7,.2,1)";
+            element.style.opacity = "0";
 
-    });
+            element.style.transform =
+                "translateY(45px)";
 
+            element.style.transition =
+                "opacity 0.9s cubic-bezier(.2,.7,.2,1), " +
+                "transform 0.9s cubic-bezier(.2,.7,.2,1)";
 
-    const revealObserver =
-        new IntersectionObserver(
-
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-                    entry.target.style.opacity =
-                        "1";
-
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
-                });
-
-            },
-
-            {
-                threshold: 0.12
-            }
-
-        );
+        });
 
 
-    revealElements.forEach(element => {
+        const revealObserver =
+            new IntersectionObserver(
 
-        revealObserver.observe(element);
+                entries => {
 
-    });
+                    entries.forEach(entry => {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        entry.target.style.opacity =
+                            "1";
+
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        revealElements.forEach(element => {
+
+            revealObserver.observe(element);
+
+        });
+
+    }
 
 
     /* =====================================================
@@ -1045,7 +1333,10 @@ formBudgetUnknown:
         );
 
 
-    if (heroContent) {
+    if (
+        heroContent &&
+        !prefersReducedMotion()
+    ) {
 
         heroContent.animate(
 
@@ -1077,7 +1368,10 @@ formBudgetUnknown:
     }
 
 
-    if (heroVisual) {
+    if (
+        heroVisual &&
+        !prefersReducedMotion()
+    ) {
 
         heroVisual.animate(
 
@@ -1140,6 +1434,10 @@ formBudgetUnknown:
         hero.addEventListener(
             "mousemove",
             event => {
+
+                if (prefersReducedMotion()) {
+                    return;
+                }
 
                 const rect =
                     hero.getBoundingClientRect();
@@ -1265,7 +1563,8 @@ formBudgetUnknown:
             if (
                 currentScroll >
                 lastScrollY + 15 &&
-                currentScroll > 300
+                currentScroll > 300 &&
+                !mobileMenuOpen
             ) {
 
                 header.style.transform =
@@ -1316,6 +1615,47 @@ formBudgetUnknown:
         false;
 
 
+    /* Layout lives in CSS (.main-nav.is-open); JS only switches state. */
+
+    function setMobileMenu(open) {
+
+        if (
+            !menuToggle ||
+            !mainNav
+        ) {
+            return;
+        }
+
+        mobileMenuOpen = open;
+
+        mainNav.classList.toggle(
+            "is-open",
+            open
+        );
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(open)
+        );
+
+        updateMenuToggleLabel();
+
+        document.body.style.overflow =
+            open
+                ? "hidden"
+                : "";
+
+        if (
+            open &&
+            header
+        ) {
+            header.style.transform =
+                "translateY(0)";
+        }
+
+    }
+
+
     if (
         menuToggle &&
         mainNav
@@ -1325,53 +1665,9 @@ formBudgetUnknown:
             "click",
             () => {
 
-                mobileMenuOpen =
-                    !mobileMenuOpen;
-
-
-                if (mobileMenuOpen) {
-
-                    mainNav.style.display =
-                        "flex";
-
-                    mainNav.style.position =
-                        "fixed";
-
-                    mainNav.style.inset =
-                        "80px 0 auto 0";
-
-                    mainNav.style.padding =
-                        "40px 25px";
-
-                    mainNav.style.background =
-                        "rgba(5,7,10,.97)";
-
-                    mainNav.style.flexDirection =
-                        "column";
-
-                    mainNav.style.alignItems =
-                        "flex-start";
-
-                    mainNav.style.gap =
-                        "28px";
-
-                    mainNav.style.borderBottom =
-                        "1px solid rgba(255,255,255,.08)";
-
-
-                    document.body.style.overflow =
-                        "hidden";
-
-                } else {
-
-                    mainNav.removeAttribute(
-                        "style"
-                    );
-
-                    document.body.style.overflow =
-                        "";
-
-                }
+                setMobileMenu(
+                    !mobileMenuOpen
+                );
 
             }
         );
@@ -1385,27 +1681,49 @@ formBudgetUnknown:
                     "click",
                     () => {
 
-                        if (
-                            window.innerWidth <=
-                            1100
-                        ) {
-
-                            mobileMenuOpen =
-                                false;
-
-                            mainNav.removeAttribute(
-                                "style"
-                            );
-
-                            document.body.style.overflow =
-                                "";
-
-                        }
+                        setMobileMenu(false);
 
                     }
                 );
 
             });
+
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    mobileMenuOpen
+                ) {
+
+                    setMobileMenu(false);
+
+                    menuToggle.focus();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    mobileMenuOpen &&
+                    !mainNav.contains(event.target) &&
+                    !menuToggle.contains(event.target)
+                ) {
+
+                    setMobileMenu(false);
+
+                }
+
+            }
+        );
 
     }
 
@@ -1419,20 +1737,11 @@ formBudgetUnknown:
         () => {
 
             if (
-                window.innerWidth >
-                1100 &&
-                mainNav
+                window.innerWidth > 1100 &&
+                mobileMenuOpen
             ) {
 
-                mobileMenuOpen =
-                    false;
-
-                mainNav.removeAttribute(
-                    "style"
-                );
-
-                document.body.style.overflow =
-                    "";
+                setMobileMenu(false);
 
             }
 
@@ -1456,7 +1765,8 @@ formBudgetUnknown:
 
             if (
                 !projectShowcase ||
-                window.innerWidth < 800
+                window.innerWidth < 800 ||
+                prefersReducedMotion()
             ) {
                 return;
             }
@@ -1537,38 +1847,75 @@ formBudgetUnknown:
                 : null;
 
 
+        /* state: "success" | "error" | null. The message keeps its
+           data-i18n key, so switching language re-translates it. */
+
+        function showFormMessage(state) {
+
+            if (!formMessage) {
+                return;
+            }
+
+            formMessage.classList.remove(
+                "is-success",
+                "is-error"
+            );
+
+            if (!state) {
+
+                formMessage.removeAttribute("data-i18n");
+
+                formMessage.textContent = "";
+
+                return;
+
+            }
+
+            const key =
+                state === "success"
+                    ? "formSuccess"
+                    : "formError";
+
+            formMessage.setAttribute(
+                "data-i18n",
+                key
+            );
+
+            formMessage.textContent =
+                translations[currentLanguage][key];
+
+            formMessage.classList.add(
+                "is-" + state
+            );
+
+            formMessage.scrollIntoView({
+                behavior:
+                    prefersReducedMotion()
+                        ? "auto"
+                        : "smooth",
+                block: "center"
+            });
+
+        }
+
+
         projectInquiryForm.addEventListener(
             "submit",
-           async event => {
+            async event => {
 
-    event.preventDefault();
+                event.preventDefault();
 
-    const language =
-                    translations[currentLanguage]
-                        ? currentLanguage
-                        : "en";
-
-
-                const selected =
-                    translations[language];
-
-
-                if (formMessage) {
-
-                    formMessage.textContent = "";
-
-                    formMessage.style.color = "";
-
-                }
+                showFormMessage(null);
 
 
                 if (submitButton) {
 
                     submitButton.disabled = true;
 
-                    submitButton.style.opacity = "0.65";
-
-                    submitButton.style.cursor = "wait";
+                    submitButton.setAttribute(
+                        "aria-busy",
+                        "true"
+                    );
 
                 }
 
@@ -1576,7 +1923,7 @@ formBudgetUnknown:
                 if (submitText) {
 
                     submitText.textContent =
-                        selected.formSending;
+                        translations[currentLanguage].formSending;
 
                 }
 
@@ -1613,42 +1960,7 @@ formBudgetUnknown:
 
                     projectInquiryForm.reset();
 
-if (formMessage) {
-
-    formMessage.textContent =
-        "✓ " + selected.formSuccess;
-
-    formMessage.style.color =
-        "#8ee6a4";
-
-    formMessage.style.fontWeight =
-        "700";
-
-    formMessage.style.fontSize =
-        "1rem";
-
-    formMessage.style.marginTop =
-        "18px";
-
-    formMessage.style.padding =
-        "14px 16px";
-
-    formMessage.style.border =
-        "1px solid rgba(142, 230, 164, 0.35)";
-
-    formMessage.style.borderRadius =
-        "10px";
-
-    formMessage.style.background =
-        "rgba(142, 230, 164, 0.08)";
-
-    formMessage.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
-
-}
-
+                    showFormMessage("success");
 
                 } catch (error) {
 
@@ -1657,16 +1969,7 @@ if (formMessage) {
                         error
                     );
 
-
-                    if (formMessage) {
-
-                        formMessage.textContent =
-                            selected.formError;
-
-                        formMessage.style.color =
-                            "#ff8f8f";
-
-                    }
+                    showFormMessage("error");
 
                 } finally {
 
@@ -1674,9 +1977,9 @@ if (formMessage) {
 
                         submitButton.disabled = false;
 
-                        submitButton.style.opacity = "";
-
-                        submitButton.style.cursor = "";
+                        submitButton.removeAttribute(
+                            "aria-busy"
+                        );
 
                     }
 
@@ -1684,7 +1987,7 @@ if (formMessage) {
                     if (submitText) {
 
                         submitText.textContent =
-                            selected.formSubmit;
+                            translations[currentLanguage].formSubmit;
 
                     }
 

@@ -270,10 +270,20 @@ button {
 .menu-toggle {
     display: none;
 
+    /* 44px touch target; the two lines keep their original 35px look. */
+    width: 44px;
+    height: 44px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-right: -5px;
+
     background: transparent;
     border: 0;
-
-    width: 35px;
 
     cursor: pointer;
 }
@@ -281,11 +291,26 @@ button {
 .menu-toggle span {
     display: block;
 
+    width: 35px;
     height: 1px;
 
-    margin: 7px 0;
-
     background: white;
+
+    transition: transform 0.25s ease;
+}
+
+.menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--blue-light);
+    outline-offset: 4px;
 }
 
 
@@ -1548,9 +1573,9 @@ button {
 
 .footer-nav a,
 .footer-email {
-    color: #9099a6;
+    color: #a3acb8;
 
-    font-size: 10px;
+    font-size: 12px;
 
     transition: color 0.25s ease;
 }
@@ -1571,15 +1596,33 @@ button {
     display: flex;
     justify-content: space-between;
 
-    color: #5e6876;
+    color: var(--muted);
 
-    font-size: 9px;
+    font-size: 11px;
 }
 
 .footer-legal {
     display: flex;
 
     gap: 25px;
+}
+
+.footer-legal a {
+    padding: 6px 0;
+
+    color: #a3acb8;
+
+    font-size: 12px;
+
+    text-decoration: underline;
+    text-decoration-color: rgba(163, 172, 184, 0.35);
+    text-underline-offset: 4px;
+
+    transition: color 0.25s ease;
+}
+
+.footer-legal a:hover {
+    color: white;
 }
 
 
@@ -1609,7 +1652,40 @@ button {
     }
 
     .menu-toggle {
-        display: block;
+        display: flex;
+    }
+
+    /* Opened by js/main.js; sits directly under the header at every width. */
+    .main-nav.is-open {
+        display: flex;
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        padding: 40px 25px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        /* 44px-tall links with no gap keep the original ~44px row rhythm. */
+        gap: 0;
+
+        background: rgba(5, 7, 10, 0.97);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .main-nav.is-open a {
+        min-height: 44px;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .main-nav.is-open a::after {
+        bottom: 8px;
     }
 
     .hero {
@@ -2779,16 +2855,49 @@ html:lang(sr) .studio-manifesto h2 {
     color: rgba(255, 255, 255, 0.34);
 }
 
+/* Always rendered (empty = zero height) so aria-live announcements work. */
 .form-message {
-    display: none;
+    border-radius: 10px;
 
-    margin-top: 20px;
-    padding: 16px 18px;
-
-    border-radius: 12px;
-
-    font-size: 0.86rem;
+    font-size: 1rem;
+    font-weight: 700;
     line-height: 1.55;
+}
+
+.form-message.is-success,
+.form-message.is-error {
+    margin-top: 18px;
+    padding: 14px 16px;
+}
+
+.form-message.is-success {
+    color: #8ee6a4;
+
+    border: 1px solid rgba(142, 230, 164, 0.35);
+
+    background: rgba(142, 230, 164, 0.08);
+}
+
+.form-message.is-success::before {
+    content: "✓ ";
+}
+
+.form-message.is-error {
+    color: #ff8f8f;
+
+    border: 1px solid rgba(255, 143, 143, 0.35);
+
+    background: rgba(255, 143, 143, 0.08);
+}
+
+.form-submit:disabled {
+    opacity: 0.65;
+
+    cursor: wait;
+}
+
+.form-submit:disabled:hover {
+    transform: none;
 }
 
 

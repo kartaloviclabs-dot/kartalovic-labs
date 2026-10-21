@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="KARTALOVIC LABS builds native Android apps, modern websites and custom digital products. From your first idea through design, development and launch.">
+    <meta name="description" data-i18n-content="metaDescHome" content="KARTALOVIC LABS builds native Android apps, modern websites and custom digital products. From your first idea through design, development and launch.">
 
-    <title>Android App &amp; Web Development | KARTALOVIC LABS</title>
+    <title data-i18n="metaTitleHome">Android App &amp; Web Development | KARTALOVIC LABS</title>
     <link rel="canonical" href="https://kartaloviclabs.com/">
 
     <meta property="og:type" content="website">
@@ -30,7 +30,7 @@
 
     <header class="site-header">
 
-        <a class="brand" href="/#home" aria-label="KARTALOVIC LABS home">
+        <a class="brand" href="/#home" aria-label="KARTALOVIC LABS home" data-i18n-aria-label="ariaHome">
 
             <span class="brand-mark">K</span>
 
@@ -42,7 +42,7 @@
         </a>
 
 
-        <nav class="main-nav" aria-label="Main navigation">
+        <nav class="main-nav" id="mainNav" aria-label="Main navigation" data-i18n-aria-label="ariaMainNav">
 
             <a href="/#work" data-i18n="navWork">
                 Work
@@ -65,12 +65,14 @@
 
         <div class="header-actions">
 
-            <div class="language-switcher" aria-label="Language">
+            <div class="language-switcher" role="group" aria-label="Language" data-i18n-aria-label="ariaLanguage">
 
                 <button
                     class="lang-btn active"
                     type="button"
                     data-lang="en"
+                    aria-label="English"
+                    lang="en"
                 >
                     EN
                 </button>
@@ -79,6 +81,8 @@
                     class="lang-btn"
                     type="button"
                     data-lang="de"
+                    aria-label="Deutsch"
+                    lang="de"
                 >
                     DE
                 </button>
@@ -87,6 +91,8 @@
                     class="lang-btn"
                     type="button"
                     data-lang="sr"
+                    aria-label="Srpski"
+                    lang="sr-Latn"
                 >
                     SR
                 </button>
@@ -111,6 +117,8 @@
             class="menu-toggle"
             type="button"
             aria-label="Open menu"
+            aria-controls="mainNav"
+            aria-expanded="false"
         >
             <span></span>
             <span></span>
@@ -412,9 +420,9 @@
                             WEB
                         </span>
 
-                        <span>DIGITAL</span>
+                        <span data-i18n="servicesHeadingDigital">DIGITAL</span>
 
-                        <span>PRODUCTS</span>
+                        <span data-i18n="servicesHeadingProducts">PRODUCTS</span>
 
                         <span>SEO</span>
 
@@ -563,9 +571,9 @@
 
             <div class="services-statement">
 
-                <span>IDEA.</span>
-                <span>BUILD.</span>
-                <span class="accent">LAUNCH.</span>
+                <span data-i18n="statementIdea">IDEA.</span>
+                <span data-i18n="statementBuild">BUILD.</span>
+                <span class="accent" data-i18n="statementLaunch">LAUNCH.</span>
 
             </div>
 
@@ -703,6 +711,7 @@
                             class="retroloop-showcase-image"
                             src="assets/projects/retroloop/retroloop-showcase.png"
                             alt="RetroLoop Android application showing gameplay, home screen and controller configuration"
+                            data-i18n-alt="retroloopImageAlt"
                             loading="lazy"
                         >
 
@@ -740,11 +749,11 @@
                         02
                     </span>
 
-                    <span class="retroloop-detail-title">
+                    <span class="retroloop-detail-title" data-i18n="retroloopControllerTitle">
                         CONTROLLER
                     </span>
 
-                    <span class="retroloop-detail-text">
+                    <span class="retroloop-detail-text" data-i18n="retroloopControllerText">
                         CUSTOM MAPPING
                     </span>
 
@@ -761,7 +770,7 @@
                         SAVE STATES
                     </span>
 
-                    <span class="retroloop-detail-text">
+                    <span class="retroloop-detail-text" data-i18n="retroloopSaveText">
                         PLAY ANYTIME
                     </span>
 
@@ -778,7 +787,7 @@
                         AUTO PATCHING
                     </span>
 
-                    <span class="retroloop-detail-text">
+                    <span class="retroloop-detail-text" data-i18n="retroloopPatchText">
                         BUILT IN
                     </span>
 
@@ -850,11 +859,11 @@
 
                     <div class="studio-principles">
 
-                        <span>IDEAS</span>
-                        <span>STRATEGY</span>
-                        <span>DESIGN</span>
-                        <span>DEVELOPMENT</span>
-                        <span>LAUNCH</span>
+                        <span data-i18n="principleIdeas">IDEAS</span>
+                        <span data-i18n="principleStrategy">STRATEGY</span>
+                        <span data-i18n="principleDesign">DESIGN</span>
+                        <span data-i18n="principleDevelopment">DEVELOPMENT</span>
+                        <span data-i18n="principleLaunch">LAUNCH</span>
 
                     </div>
 
@@ -967,9 +976,9 @@
 
             <div class="contact-side">
 
-                <span>EUROPE</span>
-                <span>AND</span>
-                <span>BEYOND.</span>
+                <span data-i18n="sideEurope">EUROPE</span>
+                <span data-i18n="sideAnd">AND</span>
+                <span data-i18n="sideBeyond">BEYOND.</span>
 
             </div>
 
@@ -1009,6 +1018,7 @@
         <nav
             class="footer-nav"
             aria-label="Footer navigation"
+            data-i18n-aria-label="ariaFooterNav"
         >
 
             <a href="/#work" data-i18n="navWork">
@@ -1038,12 +1048,14 @@
         </a>
 
 
-        <div class="footer-languages">
+        <div class="footer-languages" role="group" aria-label="Language" data-i18n-aria-label="ariaLanguage">
 
             <button
                 class="lang-btn active"
                 type="button"
                 data-lang="en"
+                aria-label="English"
+                lang="en"
             >
                 EN
             </button>
@@ -1052,6 +1064,8 @@
                 class="lang-btn"
                 type="button"
                 data-lang="de"
+                aria-label="Deutsch"
+                lang="de"
             >
                 DE
             </button>
@@ -1060,6 +1074,8 @@
                 class="lang-btn"
                 type="button"
                 data-lang="sr"
+                aria-label="Srpski"
+                lang="sr-Latn"
             >
                 SR
             </button>
@@ -1069,7 +1085,7 @@
 
         <div class="footer-bottom">
 
-            <p>
+            <p data-i18n="copyright">
                 © 2026 KARTALOVIC LABS. All rights reserved.
             </p>
 
