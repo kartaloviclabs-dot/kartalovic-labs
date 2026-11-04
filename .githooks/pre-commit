@@ -1,0 +1,29 @@
+#!/bin/sh
+# KARTALOVIC LABS — pre-commit check for the multilingual build.
+#
+# Blocks a commit when the generated pages are out of date with
+# _i18n/templates + _i18n/translations.json, or fail the static checks.
+# Local only: it does not change how GitHub Pages builds or publishes.
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# Skip in an emergency:    git commit --no-verify
+#
+# Note: it checks the working tree, so stage the regenerated files too.
+
+if ! command -v node >/dev/null 2>&1; then
+    echo "pre-commit: Node.js not found, i18n checks skipped" >&2
+    exit 0
+fi
+
+ROOT=$(git rev-parse --show-toplevel) || exit 1
+
+node "$ROOT/_i18n/build.mjs" --check || {
+    echo "pre-commit: generated pages are out of date." >&2
+    echo "            run: node _i18n/build.mjs  and stage the changes" >&2
+    exit 1
+}
+
+node "$ROOT/_i18n/verify.mjs" || {
+    echo "pre-commit: static checks failed (see above)" >&2
+    exit 1
+}
