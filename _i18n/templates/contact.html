@@ -36,11 +36,13 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/icon-192.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+    <script>document.documentElement.classList.add("js");</script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 
 <body class="contact-page">
+    <a class="skip-link" href="#main" data-i18n="skipToContent">Skip to content</a>
 
 
     <!-- =====================================================
@@ -164,7 +166,7 @@
 
 
 
-    <main>
+    <main id="main" tabindex="-1">
 
 
         <!-- =================================================
@@ -447,6 +449,7 @@
                                     type="text"
                                     id="clientName"
                                     name="name"
+                                    maxlength="100"
                                     autocomplete="name"
                                     placeholder="Name"
                                     data-i18n-placeholder="formNamePlaceholder"
@@ -470,6 +473,7 @@
                                     type="email"
                                     id="clientEmail"
                                     name="email"
+                                    maxlength="254"
                                     autocomplete="email"
                                     placeholder="you@email.com"
                                     data-i18n-placeholder="formEmailPlaceholder"
@@ -645,6 +649,7 @@
                             <textarea
                                 id="projectMessage"
                                 name="message"
+                                maxlength="5000"
                                 rows="7"
                                 placeholder="Describe your idea in your own words. You don't need any technical knowledge."
                                 data-i18n-placeholder="formMessagePlaceholder"

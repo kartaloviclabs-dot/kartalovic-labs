@@ -353,6 +353,37 @@ button:focus-visible {
     outline-offset: 4px;
 }
 
+/* Hidden until reached with the keyboard. */
+.skip-link {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    z-index: 200;
+
+    padding: 12px 18px;
+
+    font-size: 14px;
+
+    color: var(--text);
+
+    background: var(--bg);
+
+    border: 1px solid var(--blue-light);
+    border-radius: 8px;
+
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: none;
+}
+
+/* Focus target of the skip link; not interactive itself. */
+main:focus {
+    outline: none;
+}
+
 
 /* =========================================================
    HERO
@@ -4325,5 +4356,49 @@ html:lang(sr) .studio-manifesto h2 {
             125px
             20px
             75px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION WITHOUT JAVASCRIPT
+   The "js" class is set in <head>. Without it the toggle
+   cannot work, so the links stay visible under the header.
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    html:not(.js) .menu-toggle {
+        display: none;
+    }
+
+    html:not(.js) .main-nav ~ .header-actions {
+        margin-right: 0;
+    }
+
+    html:not(.js) .main-nav {
+        display: flex;
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        padding: 0 clamp(16px, 5vw, 90px);
+
+        flex-wrap: wrap;
+
+        gap: 0 24px;
+    }
+
+    html:not(.js) .main-nav a {
+        min-height: 44px;
+
+        display: flex;
+        align-items: center;
+    }
+
+    html:not(.js) .main-nav a::after {
+        bottom: 8px;
     }
 }

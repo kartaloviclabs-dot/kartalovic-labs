@@ -749,6 +749,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     !mobileMenuOpen
                 );
 
+                /* The nav comes before the toggle in the DOM, so Tab
+                   would skip the open menu without this. */
+
+                const firstLink =
+                    mainNav.querySelector("a");
+
+                if (
+                    mobileMenuOpen &&
+                    firstLink
+                ) {
+
+                    firstLink.focus({
+                        preventScroll: true
+                    });
+
+                }
+
             }
         );
 
@@ -767,6 +784,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
             });
+
+
+        /* Tabbing past the header closes the menu that covers the page. */
+
+        if (header) {
+
+            header.addEventListener(
+                "focusout",
+                event => {
+
+                    if (
+                        mobileMenuOpen &&
+                        event.relatedTarget &&
+                        !header.contains(event.relatedTarget)
+                    ) {
+
+                        setMobileMenu(false);
+
+                    }
+
+                }
+            );
+
+        }
 
 
         document.addEventListener(

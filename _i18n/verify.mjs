@@ -117,6 +117,20 @@ function checkLinks(html, language, label, isNotFound) {
     }
 }
 
+function checkAccessibility(html, label) {
+    expect(/<body[^>]*>\s*<a class="skip-link" href="#main"/.test(html), `${label}: skip link is not the first element in <body>`);
+    expect(tags(html, /<main\b[^>]*>/g).length === 1 && /<main\b[^>]*\sid="main"/.test(html), `${label}: expected one <main id="main">`);
+    if (html.includes('class="menu-toggle"')) {
+        const flag = html.indexOf('classList.add("js")');
+        expect(flag !== -1 && flag < html.indexOf('rel="stylesheet"'), `${label}: "js" class must be set before the stylesheet`);
+    }
+    if (html.includes('name="_gotcha"')) {
+        for (const [name, limit] of [["name", 100], ["email", 254], ["message", 5000]]) {
+            expect(new RegExp(`name="${name}"\\s+maxlength="${limit}"`).test(html), `${label}: ${name} field needs maxlength ${limit}`);
+        }
+    }
+}
+
 function hreflangSet(html) {
     return Object.fromEntries(tags(html, /<link rel="alternate" hreflang="[^"]+" href="[^"]+">/g)
         .map(tag => [attr(tag, "hreflang"), attr(tag, "href")]));
@@ -171,6 +185,7 @@ for (const page of PAGES) {
 
         checkTranslations(html, language, label);
         checkLinks(html, language, label, false);
+        checkAccessibility(html, label);
 
         // Runtime strings for js/main.js (pages that load it).
         if (/src="\/js\/main\.js(\?v=[\w.-]+)?"/.test(html)) {
@@ -198,6 +213,7 @@ for (const page of PAGES) {
         "404.html: runtime strings for all languages missing");
     checkTranslations(html, "en", "404.html");
     checkLinks(html, "en", "404.html", true);
+    checkAccessibility(html, "404.html");
 }
 
 /* ------------------------------------------------ sitemap + robots */
