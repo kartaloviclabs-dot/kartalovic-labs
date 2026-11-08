@@ -12,12 +12,16 @@
  * Output: English pages keep their existing URLs (/, /contact.html, ...);
  * German and Serbian pages are written to /de/ and /sr/. Each page gets its
  * own canonical URL and reciprocal hreflang links (incl. x-default).
+ * Single-language pages (SINGLE_LANGUAGE_PAGES) get a canonical URL only.
+ * Every page links css/style.css with ?v=<content hash>, so a CSS change
+ * reaches visitors without waiting for the GitHub Pages cache to expire.
  * The _i18n folder is not published: Jekyll on GitHub Pages skips
  * directories that start with an underscore.
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -37,6 +41,15 @@ const PAGES = [
     { file: "contact.html", path: "contact.html" },
     { file: "privacy.html", path: "privacy.html" },
     { file: "impressum.html", path: "impressum.html" },
+];
+
+/* Pages written in one language only. They are not translations of one
+   another, so they get no hreflang links. Their language switcher leads to
+   the page for the same service in that language, else to its home page,
+   and links marked data-service-page="<service>" point at them. */
+const SINGLE_LANGUAGE_PAGES = [
+    { file: "webdesign-vechta.html", language: "de", path: "webdesign-vechta.html", service: "web" },
+    { file: "izrada-sajtova.html", language: "sr", path: "izrada-sajtova.html", service: "web" },
 ];
 
 /* GitHub Pages serves /404.html for every missing URL, so there is one
@@ -85,6 +98,13 @@ const escapeAttribute = value =>
 
 const pageUrl = (language, path) => `${SITE}/${LANGUAGES[language].dir}${path}`;
 const pageHref = (language, path) => `/${LANGUAGES[language].dir}${path}`;
+
+/* Language -> path for the language switcher. */
+const samePathEverywhere = path =>
+    Object.fromEntries(Object.keys(LANGUAGES).map(code => [code, path]));
+
+const servicePage = (service, language) =>
+    SINGLE_LANGUAGE_PAGES.find(page => page.service === service && page.language === language);
 
 
 /* ----------------------------------------------------------- validation */
@@ -163,7 +183,25 @@ function localizeLinks(html, language) {
     });
 }
 
-function setLanguageLinks(html, language, path, label) {
+/* Links marked data-service-page="<service>" sit on their own line; they
+   point at that service's page in the current language, and languages
+   without one drop the whole line. */
+const SERVICE_LINK = /\n[ \t]*<a\b[^>]* data-service-page="(\w+)"[^>]*>[^<]*<\/a>/g;
+
+function linkServicePages(html, language, label) {
+    return html.replace(SERVICE_LINK, (link, service) => {
+        if (!SINGLE_LANGUAGE_PAGES.some(page => page.service === service)) {
+            fail(`${label}: no page for data-service-page="${service}"`);
+        }
+        const page = servicePage(service, language);
+        if (!page) return "";
+        return link
+            .replace(` data-service-page="${service}"`, "")
+            .replace(/ href="[^"]*"/, ` href="${pageHref(language, page.path)}"`);
+    });
+}
+
+function setLanguageLinks(html, language, paths, label) {
     let count = 0;
     const result = html.replace(
         /<a class="lang-btn[^"]*" href="[^"]*"(?: aria-current="true")? data-lang="(\w+)"/g,
@@ -171,7 +209,7 @@ function setLanguageLinks(html, language, path, label) {
             count += 1;
             if (!LANGUAGES[target]) fail(`${label}: unknown language link "${target}"`);
             const active = target === language;
-            return `<a class="lang-btn${active ? " active" : ""}" href="${pageHref(target, path)}"` +
+            return `<a class="lang-btn${active ? " active" : ""}" href="${pageHref(target, paths[target])}"` +
                 `${active ? ' aria-current="true"' : ""} data-lang="${target}"`;
         }
     );
@@ -179,21 +217,25 @@ function setLanguageLinks(html, language, path, label) {
     return result;
 }
 
-function setHead(html, language, path, label) {
+/* `cluster`: the languages this page has equivalents in (hreflang +
+   og:locale:alternate); empty for single-language pages. */
+function setHead(html, language, path, label, cluster) {
     const { htmlLang, ogLocale } = LANGUAGES[language];
     const self = pageUrl(language, path);
 
     html = replaceOnce(html, /<html lang="[^"]*">/, `<html lang="${htmlLang}">`, `${label} <html lang>`);
 
-    const alternates = Object.keys(LANGUAGES)
+    const alternates = cluster
         .map(code => `    <link rel="alternate" hreflang="${LANGUAGES[code].hreflang}" href="${pageUrl(code, path)}">`)
-        .concat(`    <link rel="alternate" hreflang="x-default" href="${pageUrl(DEFAULT_LANGUAGE, path)}">`);
+        .concat(cluster.includes(DEFAULT_LANGUAGE)
+            ? [`    <link rel="alternate" hreflang="x-default" href="${pageUrl(DEFAULT_LANGUAGE, path)}">`]
+            : []);
 
     html = replaceOnce(
         html,
         /( *)<link rel="canonical" href="[^"]*">/,
-        (match, indent) => `${indent}<link rel="canonical" href="${self}">\n` +
-            alternates.map(line => indent + line.trimStart()).join("\n"),
+        (match, indent) => [`<link rel="canonical" href="${self}">`, ...alternates]
+            .map(line => indent + line.trimStart()).join("\n"),
         `${label} canonical`
     );
 
@@ -208,7 +250,7 @@ function setHead(html, language, path, label) {
         html,
         /( *)<meta property="og:locale" content="[^"]*">/,
         (match, indent) => [`${indent}<meta property="og:locale" content="${ogLocale}">`]
-            .concat(Object.keys(LANGUAGES)
+            .concat(cluster
                 .filter(code => code !== language)
                 .map(code => `${indent}<meta property="og:locale:alternate" content="${LANGUAGES[code].ogLocale}">`))
             .join("\n"),
@@ -264,12 +306,29 @@ function addBanner(html, file) {
 const pick = (dict, keys) => Object.fromEntries(keys.map(key => [key, dict[key]]));
 
 
+/* The stylesheet URL carries a hash of css/style.css (line endings
+   normalised, so Windows and Linux checkouts agree). Pages are rebuilt
+   whenever the CSS changes, and --check reports them as out of date. */
+const STYLESHEET = /<link rel="stylesheet" href="\/css\/style\.css(?:\?v=[\w.-]+)?">/;
+
+function stylesheetVersion() {
+    const css = readFileSync(join(ROOT, "css", "style.css"), "utf8").replace(/\r\n/g, "\n");
+    return createHash("sha256").update(css).digest("hex").slice(0, 10);
+}
+
+function versionStylesheet(html, version, label) {
+    return replaceOnce(html, STYLESHEET,
+        `<link rel="stylesheet" href="/css/style.css?v=${version}">`, `${label} stylesheet`);
+}
+
+
 /* ----------------------------------------------------------------- build */
 
 function build() {
     const translations = loadTranslations();
     const outputs = new Map();
     const referenced = new Set(RUNTIME_KEYS);
+    const cssVersion = stylesheetVersion();
 
     const readTemplate = file => {
         const html = readFileSync(join(SOURCE, "templates", file), "utf8").replace(/\r\n/g, "\n");
@@ -280,28 +339,39 @@ function build() {
         return html;
     };
 
+    const render = (html, file, language, path, cluster, switcher) => {
+        const label = `${LANGUAGES[language].dir}${path || file}`;
+        const dict = translations[language];
+
+        if (file === "privacy.html" || file === "impressum.html") {
+            html = selectLegalPanel(html, language, label);
+        }
+
+        html = linkServicePages(html, language, label);
+        html = translateText(html, dict, label);
+        html = translateAttributes(html, dict, label);
+        html = setHead(html, language, path, label, cluster);
+        html = localizeLinks(html, language);
+        html = setLanguageLinks(html, language, switcher, label);
+        html = addRuntimeStrings(html, { languages: { [language]: pick(dict, RUNTIME_KEYS) } }, label);
+        html = versionStylesheet(html, cssVersion, label);
+        return addBanner(html, file);
+    };
+
     for (const { file, path } of PAGES) {
         const template = readTemplate(file);
 
         for (const language of Object.keys(LANGUAGES)) {
-            const label = `${LANGUAGES[language].dir}${file}`;
-            const dict = translations[language];
-            let html = template;
-
-            if (file === "privacy.html" || file === "impressum.html") {
-                html = selectLegalPanel(html, language, label);
-            }
-
-            html = translateText(html, dict, label);
-            html = translateAttributes(html, dict, label);
-            html = setHead(html, language, path, label);
-            html = localizeLinks(html, language);
-            html = setLanguageLinks(html, language, path, label);
-            html = addRuntimeStrings(html, { languages: { [language]: pick(dict, RUNTIME_KEYS) } }, label);
-            html = addBanner(html, file);
-
-            outputs.set(`${LANGUAGES[language].dir}${file}`, html);
+            outputs.set(`${LANGUAGES[language].dir}${file}`,
+                render(template, file, language, path, Object.keys(LANGUAGES), samePathEverywhere(path)));
         }
+    }
+
+    for (const { file, language, path, service } of SINGLE_LANGUAGE_PAGES) {
+        const switcher = Object.fromEntries(Object.keys(LANGUAGES)
+            .map(code => [code, servicePage(service, code)?.path ?? ""]));
+        outputs.set(`${LANGUAGES[language].dir}${path}`,
+            render(readTemplate(file), file, language, path, [], switcher));
     }
 
     // 404: English HTML, all three languages embedded for runtime switching.
@@ -309,19 +379,22 @@ function build() {
         const template = readTemplate(NOT_FOUND);
         const keys = [...new Set([...usedKeys(template), ...RUNTIME_KEYS])];
         const dict = translations[DEFAULT_LANGUAGE];
-        let html = translateText(template, dict, NOT_FOUND);
+        let html = linkServicePages(template, DEFAULT_LANGUAGE, NOT_FOUND);
+        html = translateText(html, dict, NOT_FOUND);
         html = translateAttributes(html, dict, NOT_FOUND);
-        html = setLanguageLinks(html, DEFAULT_LANGUAGE, "", NOT_FOUND);
+        html = setLanguageLinks(html, DEFAULT_LANGUAGE, samePathEverywhere(""), NOT_FOUND);
         html = addRuntimeStrings(html, {
             dynamic: true,
             paths: Object.fromEntries(Object.keys(LANGUAGES).map(code => [code, pageHref(code, "")])),
             languages: Object.fromEntries(Object.keys(LANGUAGES).map(code => [code, pick(translations[code], keys)])),
         }, NOT_FOUND);
+        html = versionStylesheet(html, cssVersion, NOT_FOUND);
         outputs.set(NOT_FOUND, addBanner(html, NOT_FOUND));
     }
 
-    // Sitemap: every indexable page in every language.
-    const urls = PAGES.flatMap(({ path }) => Object.keys(LANGUAGES).map(code => pageUrl(code, path)));
+    // Sitemap: every indexable page in every language, then the single-language pages.
+    const urls = PAGES.flatMap(({ path }) => Object.keys(LANGUAGES).map(code => pageUrl(code, path)))
+        .concat(SINGLE_LANGUAGE_PAGES.map(({ language, path }) => pageUrl(language, path)));
     outputs.set("sitemap.xml",
         '<?xml version="1.0" encoding="UTF-8"?>\n' +
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

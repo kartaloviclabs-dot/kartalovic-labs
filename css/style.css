@@ -864,7 +864,7 @@ main:focus {
 
     margin: 0 auto 35px;
 
-    color: #687384;
+    color: #768293;
 
     font-size: 11px;
 
@@ -2212,7 +2212,7 @@ main:focus {
 .retroloop-detail-number {
     margin-bottom: 14px;
 
-    color: #5d6878;
+    color: #768293;
 
     font-size: 9px;
 
@@ -2899,6 +2899,8 @@ html:lang(sr) .studio-manifesto h2 {
     border: none;
     cursor: pointer;
 
+    color: var(--text);
+
     font-family: inherit;
 }
 
@@ -2923,7 +2925,7 @@ html:lang(sr) .studio-manifesto h2 {
     font-size: 0.72rem;
     line-height: 1.5;
 
-    color: rgba(255, 255, 255, 0.34);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* Always rendered (empty = zero height) so aria-live announcements work. */
@@ -3427,7 +3429,7 @@ html:lang(sr) .studio-manifesto h2 {
 
     margin-bottom: 10px;
 
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.5);
 
     font-size: 10px;
 
@@ -3728,7 +3730,7 @@ html:lang(sr) .studio-manifesto h2 {
 .contact-final-small {
     margin-bottom: 25px;
 
-    color: #697586;
+    color: #768293;
 
     font-size: 10px;
 
@@ -3899,7 +3901,7 @@ html:lang(sr) .studio-manifesto h2 {
 
     letter-spacing: 0.2em;
 
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.5);
 }
 
 .contact-page .contact-final h2 {
@@ -4400,5 +4402,169 @@ html:lang(sr) .studio-manifesto h2 {
 
     html:not(.js) .main-nav a::after {
         bottom: 8px;
+    }
+}
+
+/* =========================================================
+   SERVICE PAGES — /de/webdesign-vechta.html, /sr/izrada-sajtova.html
+   Built from the contact page hero and the home page service list;
+   only sizes and the few extra pieces live here.
+========================================================= */
+
+/* "WEBENTWICKLUNG" is one long word: smaller than the contact title
+   so it fits narrow phones without breaking. */
+.contact-page-title.service-page-title {
+    font-size: clamp(40px, 7vw, 118px);
+}
+
+.service-page .contact-page-hero .hero-actions {
+    margin-top: 45px;
+}
+
+.service-section .services-heading h2 {
+    max-width: 640px;
+
+    font-size: clamp(38px, 4.4vw, 72px);
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+
+    text-transform: uppercase;
+}
+
+/* Grid children may shrink below their longest word; German compounds
+   ("Unternehmenswebsite") hyphenate instead of widening the column. */
+.service-section .services-layout > *,
+.service-section .service-item > div {
+    min-width: 0;
+}
+
+.service-section h2,
+.service-section h3 {
+    hyphens: auto;
+
+    overflow-wrap: break-word;
+}
+
+.service-steps {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.service-projects-heading {
+    width: min(100%, var(--max-width));
+
+    margin: 0 auto 60px;
+}
+
+.service-projects .project-title-long {
+    margin-top: 26px;
+
+    font-family: var(--font-display);
+
+    font-size: clamp(48px, 4.8vw, 88px);
+
+    font-weight: 800;
+
+    letter-spacing: -0.065em;
+
+    line-height: 1.08;
+}
+
+.service-portfolio-note {
+    width: min(100%, var(--max-width));
+
+    margin: 70px auto 0;
+    padding-top: 40px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px 40px;
+
+    border-top: 1px solid var(--line);
+}
+
+.service-portfolio-note p {
+    max-width: 640px;
+
+    color: var(--muted-light);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+/* Contact page caps this block at 1180px; here it lines up with the sections. */
+.service-page .contact-final-inner {
+    max-width: var(--max-width);
+}
+
+.service-page .contact-final .hero-actions {
+    margin-top: 40px;
+}
+
+/* Text link to a service page (also on the home and contact pages).
+   44px tall for touch; the arrow is decorative. */
+.service-more {
+    min-height: 44px;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--blue-light);
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.service-more::after {
+    content: "\2192";
+    content: "\2192" / "";
+
+    transition: transform 0.25s ease;
+}
+
+.service-more:hover::after {
+    transform: translateX(4px);
+}
+
+.service-item .service-more {
+    margin-top: 10px;
+}
+
+.contact-process .service-more {
+    margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+
+    .contact-page-title.service-page-title {
+        font-size: clamp(30px, 9.4vw, 60px);
+
+        line-height: 0.95;
+    }
+
+    .service-section .services-heading h2 {
+        font-size: clamp(32px, 9vw, 48px);
+    }
+
+    .service-projects-heading {
+        margin-bottom: 40px;
+    }
+
+    .service-projects .project-title-long {
+        font-size: 13vw;
+    }
+
+    .service-portfolio-note {
+        margin-top: 50px;
     }
 }

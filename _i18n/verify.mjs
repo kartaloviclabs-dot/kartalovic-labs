@@ -9,12 +9,17 @@
  * og:locale, reciprocal hreflang (incl. x-default), every data-i18n text
  * and attribute against translations.json, internal links and #anchors,
  * language links, images, runtime strings, legal panels; plus sitemap.xml
- * and robots.txt.
+ * and robots.txt. Single-language pages: canonical only (no hreflang),
+ * meta and social tags, JSON-LD, links to them from the home and contact
+ * pages. All indexable pages: unique title and description, one <h1>, no
+ * skipped heading levels. Every generated page links css/style.css with
+ * the current content hash as ?v=, and the CSS url() assets exist.
  */
 
 import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://kartaloviclabs.com";
@@ -26,6 +31,12 @@ const LANGUAGES = {
     sr: { dir: "sr/", htmlLang: "sr-Latn", hreflang: "sr-Latn", ogLocale: "sr_RS" },
 };
 const PAGES = ["", "contact.html", "privacy.html", "impressum.html"];
+/* Mirrors SINGLE_LANGUAGE_PAGES in build.mjs. */
+const SINGLE_LANGUAGE_PAGES = [
+    { language: "de", path: "webdesign-vechta.html", service: "web" },
+    { language: "sr", path: "izrada-sajtova.html", service: "web" },
+];
+const SERVICE_PATH = new RegExp(`^/(?:(?:de|sr)/)?(?:${SINGLE_LANGUAGE_PAGES.map(p => p.path.replace(/\./g, "\\.")).join("|")})$`);
 const RUNTIME_KEYS = ["menuOpen", "menuClose", "formSending", "formSuccess", "formError", "formSubmit"];
 const ATTRIBUTES = {
     "data-i18n-content": "content",
@@ -96,7 +107,7 @@ function checkLinks(html, language, label, isNotFound) {
         }
 
         // Page links stay inside the page language (language links excepted).
-        const isPage = /^\/(?:(?:de|sr)\/)?(?:(?:contact|privacy|impressum)\.html)?$/.test(path);
+        const isPage = /^\/(?:(?:de|sr)\/)?(?:(?:contact|privacy|impressum)\.html)?$/.test(path) || SERVICE_PATH.test(path);
         if (isPage && !tag.includes('class="lang-btn') && !isNotFound) {
             expect(path.startsWith(`/${LANGUAGES[language].dir}`) && (LANGUAGES[language].dir || !/^\/(de|sr)\//.test(path)),
                 `${label}: page link ${href} leaves the ${language} version`);
@@ -128,6 +139,38 @@ function checkAccessibility(html, label) {
         for (const [name, limit] of [["name", 100], ["email", 254], ["message", 5000]]) {
             expect(new RegExp(`name="${name}"\\s+maxlength="${limit}"`).test(html), `${label}: ${name} field needs maxlength ${limit}`);
         }
+    }
+}
+
+/* Runtime strings for js/main.js (pages that load it). */
+function checkRuntimeStrings(html, language, label) {
+    if (!/src="\/js\/main\.js(\?v=[\w.-]+)?"/.test(html)) return;
+    const json = /<script type="application\/json" id="i18nRuntime">([^<]*)<\/script>/.exec(html)?.[1];
+    const runtime = json ? JSON.parse(json) : null;
+    expect(/src="\/js\/main\.js\?v=[\w.-]+"/.test(html), `${label}: main.js is not versioned (cache busting)`);
+    expect(runtime && RUNTIME_KEYS.every(k => runtime.languages?.[language]?.[k] === translations[language][k]), `${label}: runtime strings missing or wrong`);
+}
+
+/* Indexable pages: one <h1>, heading levels never skip (h2 -> h4). */
+function checkHeadings(html, label) {
+    const levels = [...html.matchAll(/<h([1-6])\b/g)].map(match => Number(match[1]));
+    expect(levels.filter(level => level === 1).length === 1 && levels[0] === 1, `${label}: expected one <h1> before other headings`);
+    expect(levels.every((level, i) => i === 0 || level <= levels[i - 1] + 1), `${label}: heading levels skip (${levels.join(",")})`);
+}
+
+/* Titles and descriptions must not repeat across indexable pages. */
+const metaSeen = { title: new Map(), description: new Map() };
+
+function checkUniqueMeta(html, label) {
+    const values = {
+        title: /<title[^>]*>([^<]*)<\/title>/.exec(html)?.[1],
+        description: attr(tags(html, /<meta name="description"[^>]*>/g)[0] || "", "content"),
+    };
+    for (const [kind, value] of Object.entries(values)) {
+        expect(Boolean(value), `${label}: missing ${kind}`);
+        const other = metaSeen[kind].get(value);
+        expect(!other, `${label}: same ${kind} as ${other}`);
+        metaSeen[kind].set(value, label);
     }
 }
 
@@ -186,20 +229,89 @@ for (const page of PAGES) {
         checkTranslations(html, language, label);
         checkLinks(html, language, label, false);
         checkAccessibility(html, label);
+        checkRuntimeStrings(html, language, label);
+        checkHeadings(html, label);
+        checkUniqueMeta(html, label);
 
-        // Runtime strings for js/main.js (pages that load it).
-        if (/src="\/js\/main\.js(\?v=[\w.-]+)?"/.test(html)) {
-            const json = /<script type="application\/json" id="i18nRuntime">([^<]*)<\/script>/.exec(html)?.[1];
-            const runtime = json ? JSON.parse(json) : null;
-            expect(/src="\/js\/main\.js\?v=[\w.-]+"/.test(html), `${label}: main.js is not versioned (cache busting)`);
-            expect(runtime && RUNTIME_KEYS.every(k => runtime.languages?.[language]?.[k] === dict[k]), `${label}: runtime strings missing or wrong`);
+        // Service pages: linked from the home and contact pages of their own language only.
+        const ownServicePages = SINGLE_LANGUAGE_PAGES.filter(p => p.language === language).map(p => `/${config.dir}${p.path}`);
+        const serviceLinks = tags(html, /<a\b[^>]*>/g)
+            .filter(tag => !tag.includes('class="lang-btn') && SERVICE_PATH.test(attr(tag, "href") || ""))
+            .map(tag => attr(tag, "href"));
+        if (page === "" || page === "contact.html") {
+            expect(ownServicePages.every(href => serviceLinks.includes(href)), `${label}: no link to the ${language} service page`);
         }
+        expect(serviceLinks.every(href => ownServicePages.includes(href)), `${label}: links to a service page in another language`);
+        expect(!html.includes("data-service-page"), `${label}: unresolved data-service-page link`);
 
         if (page === "privacy.html" || page === "impressum.html") {
             const panels = [...html.matchAll(/data-legal-panel="(\w+)"( hidden)?/g)];
             expect(panels.length === 1 && panels[0][1] === language && !panels[0][2], `${label}: expected exactly the visible ${language} legal panel`);
         }
     }
+}
+
+/* ------------------------------------------- single-language pages */
+
+for (const { language, path, service } of SINGLE_LANGUAGE_PAGES) {
+    const config = LANGUAGES[language];
+    const file = `${config.dir}${path}`;
+    const label = file;
+    const self = `${SITE}/${file}`;
+
+    expect(existsSync(join(ROOT, file)), `${label}: file missing`);
+    if (!existsSync(join(ROOT, file))) continue;
+
+    const html = read(file);
+    const meta = name => attr(tags(html, new RegExp(`<meta (?:name|property)="${name}"[^>]*>`, "g"))[0] || "", "content");
+    const title = decode(/<title[^>]*>([^<]*)<\/title>/.exec(html)?.[1] || "");
+    const description = meta("description") || "";
+
+    expect(html.includes(`<html lang="${config.htmlLang}">`), `${label}: wrong <html lang>`);
+    expect(title.length > 0 && title.length <= 65, `${label}: title missing or longer than 65 characters`);
+    expect(description.length >= 70 && description.length <= 160, `${label}: description not 70-160 characters`);
+    expect(!/name="robots"[^>]*noindex/.test(html), `${label}: indexable page has noindex`);
+
+    // Canonical only: no translated equivalents, so no hreflang cluster.
+    const canonicals = tags(html, /<link rel="canonical"[^>]*>/g);
+    expect(canonicals.length === 1 && attr(canonicals[0], "href") === self, `${label}: canonical is not ${self}`);
+    expect(Object.keys(hreflangSet(html)).length === 0, `${label}: single-language page must not carry hreflang links`);
+    expect(meta("og:url") === self, `${label}: og:url is not ${self}`);
+    expect(meta("og:locale") === config.ogLocale, `${label}: wrong og:locale`);
+    expect(!html.includes("og:locale:alternate"), `${label}: unexpected og:locale:alternate`);
+    for (const [name, value] of [["og:title", title], ["twitter:title", title], ["og:description", description], ["twitter:description", description]]) {
+        expect(meta(name) === value, `${label}: ${name} differs from the page ${name.split(":")[1]}`);
+    }
+    for (const name of ["og:type", "og:site_name", "og:image", "og:image:alt", "twitter:card", "twitter:image"]) {
+        expect(Boolean(meta(name)), `${label}: missing ${name}`);
+    }
+
+    // Language links: the same service in that language, else its home page.
+    for (const tag of tags(html, /<a class="lang-btn[^>]*>/g)) {
+        const target = attr(tag, "data-lang");
+        const twin = SINGLE_LANGUAGE_PAGES.find(p => p.service === service && p.language === target);
+        expect(attr(tag, "href") === `/${LANGUAGES[target].dir}${twin ? twin.path : ""}`, `${label}: ${target} language link is wrong`);
+        expect((attr(tag, "aria-current") === "true") === (target === language), `${label}: aria-current wrong on ${target} link`);
+    }
+
+    // JSON-LD: valid, about this page, no ratings, reviews or prices.
+    const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match => match[1]);
+    let data = null;
+    try {
+        data = blocks.length === 1 ? JSON.parse(blocks[0]) : null;
+    } catch {
+        data = null;
+    }
+    expect(data?.["@type"] === "Service" && data.url === self && data.provider?.name === "KARTALOVIC LABS", `${label}: JSON-LD missing, invalid or not about this page`);
+    expect(!/aggregateRating|"review|"offers/i.test(blocks.join("")), `${label}: JSON-LD claims ratings, reviews or offers`);
+
+    checkTranslations(html, language, label);
+    checkLinks(html, language, label, false);
+    checkAccessibility(html, label);
+    checkRuntimeStrings(html, language, label);
+    checkHeadings(html, label);
+    checkUniqueMeta(html, label);
+    expect(!html.includes("data-service-page"), `${label}: unresolved data-service-page link`);
 }
 
 /* -------------------------------------------------------------- 404 */
@@ -220,12 +332,35 @@ for (const page of PAGES) {
 {
     const sitemap = read("sitemap.xml");
     const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-    expect(locs.length === PAGES.length * 3, `sitemap.xml: expected ${PAGES.length * 3} URLs, found ${locs.length}`);
+    const expectedCount = PAGES.length * 3 + SINGLE_LANGUAGE_PAGES.length;
+    expect(locs.length === expectedCount, `sitemap.xml: expected ${expectedCount} URLs, found ${locs.length}`);
     for (const loc of locs) expect(existsSync(join(ROOT, fileForUrl(loc))), `sitemap.xml: ${loc} has no file`);
+    for (const { language, path } of SINGLE_LANGUAGE_PAGES) {
+        expect(locs.includes(`${SITE}/${LANGUAGES[language].dir}${path}`), `sitemap.xml: ${LANGUAGES[language].dir}${path} missing`);
+    }
 
     const robots = read("robots.txt");
     expect(robots.includes(`Sitemap: ${SITE}/sitemap.xml`), "robots.txt: sitemap line missing");
     expect(!/^Disallow:\s*\/\s*$/m.test(robots) && !/^Disallow:\s*\/(de|sr)/m.test(robots), "robots.txt blocks pages");
+}
+
+/* ------------------------------------------------------- stylesheet */
+{
+    const css = read("css/style.css");
+    const version = createHash("sha256").update(css).digest("hex").slice(0, 10);
+    const files = [
+        ...Object.values(LANGUAGES).flatMap(({ dir }) => PAGES.map(path => `${dir}${path || "index.html"}`)),
+        ...SINGLE_LANGUAGE_PAGES.map(({ language, path }) => `${LANGUAGES[language].dir}${path}`),
+        "404.html",
+    ];
+    for (const file of files) {
+        const links = tags(read(file), /<link rel="stylesheet"[^>]*>/g);
+        expect(links.length === 1 && attr(links[0], "href") === `/css/style.css?v=${version}`,
+            `${file}: stylesheet must be /css/style.css?v=${version}, found ${links.map(l => attr(l, "href"))}`);
+    }
+    for (const [, url] of css.matchAll(/url\("?([^")]+)"?\)/g)) {
+        if (!url.startsWith("data:")) expect(existsSync(join(ROOT, "css", url)), `css/style.css: missing ${url}`);
+    }
 }
 
 if (problems.length) {
